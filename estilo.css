@@ -1,0 +1,168 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+#wrapper{
+    min-width: 100%;
+    height: 800px;
+    background: #d9d9d9;
+}
+.content{
+    width: 100%;
+}
+header{
+    width: 100%;
+    height: 200px;
+}
+.header{
+    width: 100%;
+    margin: auto;
+}
+.header1{
+    width: 100%;
+    height: 40px;
+    background-color: #092d5c;
+}
+.header2{
+    width: 100%;
+    height: 130px;
+    background-color: #cecaca;
+}
+.logo img{
+    background-color: transparent;
+    padding: 10px;
+    height: 120px; 
+    width: 200px;
+    display: flex;
+    float: left;
+}
+nav{
+    display: flex;
+    padding: 0;
+}
+#nav-links{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #cecaca;
+    clear: both;
+}
+#nav-linksitens{
+    color: #09a870;
+    list-style: none;
+    display: flex;
+    float: center;
+    justify-content: space-evenly;
+}
+#nav-linksitens li{
+    float: center;
+    margin-left: 10px;
+}
+#nav-linksitens li a{
+    height: 30px;
+    color: #09a870;
+    text-decoration: none;
+    display: block;
+    align-items:center;
+}
+#nav-linksitens li:hover{
+    height:30px;
+    background-color: #09a870;
+    color: #000;
+}
+.content1{
+    width: 90%;
+}
+#infhome{
+    margin: 40px;
+    padding:0;
+    width: 55%;
+    height: 500px;
+    display: flex;
+    float: left;
+    border-radius: 30px;
+    background-color: #cecaca;
+    clear: both;
+}
+.chatbot{
+    position: absolute;
+    right: 40px;
+    bottom: 120px;
+    text-align: center;
+}
+.ajudar{
+    background: #d9d9d9;
+    border: 3px solid black;
+    bottom: 100px;
+    right: 40px;
+    padding: 8px;
+    margin-bottom: 5px;
+}
+.bt{
+    display: flex;
+    float: right;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid black;
+    background: transparent;
+    cursor: pointer;
+}
+footer{
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background-color: #092d5c;
+    color:#fff;
+    clear: both;
+    float: none;
+}
+#confLembretes{
+    margin: 40px;
+    padding:0;
+    width: 90%;
+    height: 500px;
+    display: flex;
+    float: center;
+    border-radius: 30px;
+    background-color: #cecaca;
+    clear: both;
+}
+.lista{
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+input[type=text],
+input[type=date],
+input[type=time]{
+    width: 98%;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: none;
+}
+.enviar{
+    display: flex;
+    float: center;
+    height: 30px;
+    width: 50%;
+    border-radius: none;
+    background-color: #092d5c;
+    color: #fff;
+}
+#faqitens{
+    border: 1px solid black;
+    border-radius: none;
+}
+.itens1{
+    margin: 20%;
+    height: 30px;
+    width: 50px;
+    float: left;
+}
+.itens2{
+    margin: 20%;
+    height: 30px;
+    width: 50px;
+    float: right;
+}
