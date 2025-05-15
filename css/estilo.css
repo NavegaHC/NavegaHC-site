@@ -10,6 +10,18 @@
 .content{
     width: 100%;
 }
+/*Index*/
+#infhome{
+    margin: 40px;
+    padding:0;
+    width: 55%;
+    height: 500px;
+    display: flex;
+    float: left;
+    border-radius: 30px;
+    background-color: #cecaca;
+    clear: both;
+}
 header{
     width: 100%;
     height: 200px;
@@ -127,4 +139,147 @@ footer a{
     display: inline-block;
     margin-top: 10px;
     font-size: 20px;
+}
+/*Lembretes*/
+#lembrete{
+    flex: 1;
+    padding: 23px 20px;
+}
+.content-lembrete{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#confLembretes{
+    margin: 40px auto;
+    padding: 30px;
+    width: 800px;
+    display: flex;
+    border-radius: 30px;
+    background-color: #cecaca;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.lista{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+label{
+    font-weight: bold;
+}
+input[type=text],
+input[type=date],
+input[type=time]{
+    width: 100%;
+    height: 35px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 8px 60px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.enviar{
+    margin-top: 20px;
+    height: 40px;
+    width: 100%;
+    background-color: #092d5c;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.enviar:hover{
+    background-color: #064080;
+}
+/*Checklist*/
+#nav-linksitens-checklist{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 210px;
+    margin: 0;
+    padding: 0;
+}
+#nav-linksitens-checklist li a{
+    color: #09a870;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    display: block;
+}
+#nav-linksitens-checklist li a:hover{
+    background-color: #09a870;
+    color: #000;
+    border-radius: 5px;
+}
+#checklist {
+    flex: 1;
+    padding: 120px 20px;
+}
+#checklist-box {
+    background-color: #cecaca;
+    padding: 20px;
+    max-width: 800px;
+    margin: 30px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+#checklist-box h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+/*FAQ*/
+#faq {
+    flex: 1;
+    padding: 120px 20px;
+}
+#faq h1{
+    text-align: center;
+    margin-bottom: 20px;
+    display: block;
+    background-color: #cecaca;
+    color: #000;
+    width: 450px;
+    border-radius: 5px;
+}
+.confFaq{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #cecaca;
+    padding: 100px;
+    width: 1000px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.itens1, .itens2{
+    display: flex;
+    flex-direction: column;
+}
+.confFaq a{
+    text-decoration: none;
+    color: #092d5c;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 5px 10px;
+    display: block;
+}
+.confFaq a:hover{
+    background-color: #092d5c;
+    color: #fff;
+    border-radius: 5px;
 }
