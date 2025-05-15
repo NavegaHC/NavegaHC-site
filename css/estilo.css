@@ -34,6 +34,21 @@ header{
     width: 100%;
     height: 40px;
     background-color: #092d5c;
+    text-align: right;
+}
+.header1 a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 8px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+.header1 a:hover{
+    color: #000;
+    background-color: #fff;
+    border-radius: 5px;
 }
 .header2{
     width: 100%;
@@ -131,14 +146,6 @@ footer{
     justify-content: center;
     align-items: center;
     gap: 10px;
-}
-footer a{
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 20px;
 }
 /*Lembretes*/
 #lembrete{
@@ -319,4 +326,20 @@ input[type=time]{
     margin: 6px 0 0;
     font-size: 20px;
     color: #000;
+}
+.link-integrante{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #064080;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+}
+.link-integrante img{
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin-top: 15px;
 }
