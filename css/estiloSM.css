@@ -1,0 +1,10 @@
+/*Small devices (portrait tables and large phones, 600px and up): @media (min-width: 600px) */
+
+@media (min-width: 600px) and (max-width: 767.9px){
+    body{
+        background-color: #d9d9d9;
+    }
+    .tituloXL, .tituloMD, .tituloLG, .tituloXS{
+        display: none;
+    }
+}
