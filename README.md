@@ -40,9 +40,9 @@ projeto
         Samantha Faruolo Galdi/RM554794
         GITHUB: https://github.com/samyfg41
         Ana Claudia Fernandes Martins/RM561190
-        GITHUB:
+        GITHUB: https://github.com/AnaCFmartins
         Agatha Yie Won Yun/RM561507
-        GITHUB:
+        GITHUB: https://github.com/agathayun
 
 ## Endereço repositório do projeto do GITHUB
 
