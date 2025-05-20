@@ -4,11 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/estiloTablet.css">
+    <link rel="stylesheet" href="/css/estiloDesktop.css">
+    <link rel="stylesheet" href="/css/estiloSmartphone.css">
     <title>Contato</title>
 </head>
 
 <body>
+    <div id="wrapper">
+        <header>
+            <div class="header1">
+                <a href="paginas/contato.html">Contato</a>
+            </div>
+            <div class="content">
+                <div class="header2">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="/img/logonhc.png" alt="Imagem HC">
+                        </a>
+                    </div>
+                </div>
+                <nav id="nav-links">
+                    <div class="content1">
+                        <ul id="nav-linksitens">
+                            <li><a href="/index.html">Home</a></li>
+                            <li><a href="lembrete.html">Lembrete</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="checklist.html">Checklist</a></li>
+                            <li><a href="integrantes.html">Integrantes</a></li>
+                            <li><a href="formulario.html">Formulário</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main id="contato">
+            <div class="content-contato">
+                <div class="info-contato">
+                    <h2>Entre em contato conosco</h2>
+                    <form name="frmcontato" id="frmcontato">
+                        <div class="lista-contato">
+                            <label>Nome Completo:
+                                <br>
+                                <input type="text" name="nomeCompleto" id="nomeCompleto" required>
+                            </label>
+                            <br>
+                            <label>Número (Telefone):
+                                <br>
+                                <input type="text" name="numTel" id="numTel" required>
+                            </label>
+                            <label>E-mail:
+                                <br>
+                                <input type="text" name="email" id="email" required>
+                            </label>
+                        </div>
+                        <button type="submit" class="enviar">Enviar</button>
+                    </form>
+                </div>
+                <div class="chatbot">
+                    <div class="ajudar">Posso te ajudar?</div>
+                    <button class="bt">
+                        <img src="/img/chatbotnhc.png">
+                    </button>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>
+                &copy;2025 NavegaHC - Todos os Direitos Reservados
+            </p>
+        </footer>
+    </div>
+</body>
 
+</html>
 </body>
 
 </html>
