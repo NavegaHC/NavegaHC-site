@@ -91,16 +91,31 @@ nav{
 .content1{
     width: 90%;
 }
+.img_home img{
+    width: 300px;
+    padding-top: 75px;
+}
 #infhome{
-    margin: 40px;
-    padding:0;
-    width: 55%;
-    height: 500px;
     display: flex;
-    float: left;
-    border-radius: 30px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
     background-color: #cecaca;
-    clear: both;
+    border-radius: 20px;
+    margin: 20px;
+    max-width: 60%;
+}
+#infhome h1{
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+#infhome p{
+    font-size: 12px;
+    line-height: 1.5;
+}
+.infhome-img img{
+    height: 300px;
 }
 .chatbot{
     position: fixed;
@@ -160,20 +175,25 @@ footer{
     flex: 1;
     padding: 23px 20px;
 }
+.img_lembrete img{
+    width: 300px;
+    padding-top: 75px;
+}
 .content-lembrete{
-    width: 100%;
+    width: 75%;
     display: flex;
     justify-content: center;
 }
 #confLembretes{
     margin: 40px auto;
     padding: 30px;
-    width: 800px;
+    width: 600px;
     display: flex;
     border-radius: 30px;
     background-color: #cecaca;
     flex-direction: column;
     align-items: center;
+    float: left;
 }
 h1{
     text-align: center;
@@ -239,6 +259,12 @@ input[type=time]{
     display: flex;
     flex-direction: column;
     gap: 30px;
+}
+#message {
+    display: none;
+    color: #008000;
+    font-weight: bold;
+    text-align: center;
 }
 
 /*****/
