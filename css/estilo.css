@@ -634,3 +634,71 @@ footer{
     gap: 10px;
 
 }
+/*Formulário*/
+.formulario-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #092d5c;
+}
+.formulario fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+.formulario legend {
+    font-weight: bold;
+    color: #09a870;
+    padding: 0 10px;
+}
+.formulario label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.formulario input[type="text"],
+.formulario input[type="num"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.formulario button[type="submit"] {
+    background-color: #09a870;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+}
+.formulario button:hover {
+    background-color: #077a55;
+}
+#mensagem-sucesso {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 0 0 8px 8px;
+    font-size: 16px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.5s ease;
+}
