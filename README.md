@@ -32,6 +32,7 @@ projeto
 
     HTML: Utilizado para criar o código fonte dos arquivos HTML.
     CSS: Estilização visual e responsividade.
+    JavaScript: Utilizado para adicionar funcionalidades interativas.
 
 ## Integrantes
 
