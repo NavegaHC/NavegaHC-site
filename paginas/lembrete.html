@@ -24,10 +24,9 @@
                             <img src="/img/logonhc.png" alt="">
                         </a>
                     </div>
-                </div>
-                <nav id="nav-links">
-                    <div class="content1">
-                        <ul id="nav-linksitens">
+                    <!-- Menu para telas de celulares-->
+                    <div class="menu-off-screen">
+                        <ul id="nav-mobile">
                             <li><a href="/index.html">Home</a></li>
                             <li><a href="lembrete.html">Lembrete</a></li>
                             <li><a href="faq.html">FAQ</a></li>
@@ -36,45 +35,66 @@
                             <li><a href="formulario.html">Formulário</a></li>
                         </ul>
                     </div>
+                    <nav>
+                    <div class="menu-hamburguer">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </nav>
+                </div>
+                 <!--Nav bar para tablets e desktops-->
+                <nav id="nav-links">
+                    <div class="content1">
+                    <ul id="nav-linksitens">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="lembrete.html">Lembrete</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="checklist.html">Checklist</a></li>
+                        <li><a href="integrantes.html">Integrantes</a></li>
+                        <li><a href="formulario.html">Formulário</a></li>
+                    </ul>
+                    </div>
+                </nav>    
             </div>
         </header>
 
-        <main id="lembrete">
-            <div class="content-lembrete">
-                <div class="img_lembrete">
-                    <img src="/img/menina_lembrete.png">
+        <main>
+            <div id="lembrete">
+                <div class="content-lembrete">
+                    <div class="img_lembrete">
+                        <img src="/img/menina_lembrete.png">
+                    </div>
+                    <div id="confLembretes">
+                        <h1>Configurar Lembretes</h1>
+                        <form name="frmlembrete" id="frmlembrete">
+                            <div class="lista">
+                                <label>Nome Completo:
+                                    <br>
+                                    <input type="text" name="nomeCompleto" id="nomeCompleto" required>
+                                </label>
+                                <br>
+                                <label>Número (Telefone):
+                                    <br>
+                                    <input type="text" name="numTel" id="numTel" required>
+                                </label>
+                                <br>
+                                <label>Dia da consulta:
+                                    <br>
+                                    <input type="date" name="diaConsulta" id="diaConsulta" required>
+                                </label>
+                                <br>
+                                <label>Hora da consulta:
+                                    <br>
+                                    <input type="time" name="horaConsulta" id="horaConsulta" required>
+                                </label>
+                            </div>
+                            <button type="submit" class="enviar">Enviar</button>
+                        </form>
+                        
+                        <div id="msg-sucesso">Lembrete criado com sucesso!</div>
+                    </div>
                 </div>
-                <div id="confLembretes">
-                    <h1>Configurar Lembretes</h1>
-                    <form name="frmlembrete" id="frmlembrete">
-                        <div class="lista">
-                            <label>Nome Completo:
-                                <br>
-                                <input type="text" name="nomeCompleto" id="nomeCompleto" required>
-                            </label>
-                            <br>
-                            <label>Número (Telefone):
-                                <br>
-                                <input type="text" name="numTel" id="numTel" required>
-                            </label>
-                            <br>
-                            <label>Dia da consulta:
-                                <br>
-                                <input type="date" name="diaConsulta" id="diaConsulta" required>
-                            </label>
-                            <br>
-                            <label>Hora da consulta:
-                                <br>
-                                <input type="time" name="horaConsulta" id="horaConsulta" required>
-                            </label>
-                        </div>
-                        <button type="submit" class="enviar">Enviar</button>
-                    </form>
-
-                    <div id="msg-sucesso">Lembrete criado com sucesso!</div>
-                </div>
-            </div>
 
             <div class="chatbot">
                 <button class="bt"><img src="/img/chatbotnhc.png" alt="Chatbot"></button>
@@ -87,7 +107,7 @@
             </p>
         </footer>
     </div>
-
+    <script src="/js/script-menuhamburguer.js"></script>
     <script src="/js/lembrete.js"></script>
 </body>
 <!-- Modal de sucesso -->

@@ -91,10 +91,6 @@ nav{
 .content1{
     width: 90%;
 }
-.img_home img{
-    width: 300px;
-    padding-top: 75px;
-}
 #infhome{
     display: flex;
     justify-content: space-between;
@@ -103,16 +99,24 @@ nav{
     background-color: #cecaca;
     border-radius: 20px;
     margin: 20px;
+    margin-top: 40px;
     max-width: 60%;
 }
-#infhome h1{
-    font-size: 20px;
+.infhome-texto h1{
+    font-size: 30px;
     margin-bottom: 10px;
+    text-align: center;
     font-weight: bold;
 }
-#infhome p{
-    font-size: 12px;
+.infhome-texto p{
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
     line-height: 1.5;
+}
+.img_home img{
+    width: 300px;
+    padding-top: 75px;
 }
 .infhome-img img{
     height: 300px;
@@ -165,8 +169,8 @@ footer{
     clear: both;
     float: none;
     gap: 10px;
-
 }
+
 
 /***********/
 /*Lembretes*/

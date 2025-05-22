@@ -1,15 +1,288 @@
-/*eXtra Small devices (phones, 600px and down)*/ 
-
+/* Responsivo para telas pequenas */
 @media (max-width: 599.9px) {
     body{
-        background-color: blue;
+        background-color: #d9d9d9;
+    }
+    .logo img {
+        width: 150px;
+        height: auto;
+    }
+    .header1 a {
+        font-size: 16px;
+        margin-right: 10px;
+    }
+    .menu-off-screen{
+        float: right;
+        background-color: #d9d9d9;
+        height: 100%;
+        width: 100%;
+        max-width: 450px;
+        position: fixed;
+        top: 0;
+        right: -450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 3rem;
+        transition: .3s ease;
+    }
+    .menu-off-screen.active{
+        right: 0;
+    }
+    nav{
+        padding: 1rem;
+        display: flex;
+        background-color: #cecaca;
+    }
+    #nav-mobile{
+        width: 100%;
+        height: 40px;
+        background-color: #d9d9d9;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #nav-mobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+    }
+    #nav-mobile li a{
+        color: #09a870;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 5px 10px;
+        display: block;
+    }
+    #nav-mobile li a:hover{
+        background-color: #09a870;
+        color: #000;
+        border-radius: 5px;
+    }
+    .menu-hamburguer{
+        height: 50px;
+        width: 50px;
+        margin-left: auto;
+        position: relative;
+    }
+    .menu-hamburguer span{
+        height: 5px;
+        width: 100%;
+        background-color: #09a870;
+        border-radius: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: .3s ease; 
+    }
+    .menu-hamburguer span:nth-child(1){
+        top: 25%;
+    }
+    .menu-hamburguer span:nth-child(3){
+        top: 75%;
+    }
+    .menu-hamburguer.active span:nth-child(1){
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+
+    }
+    .menu-hamburguer.active span:nth-child(2){
+        opacity: 0;
+    }
+    .menu-hamburguer.active span:nth-child(3){
+        top: 50%;
+        transform: translate(-50%, 50%) rotate(-45deg);
+    }
+    #nav-links{
+        display: none;
+    }
+    #infhome {
+        flex-direction: column;
+        max-width: 100%;
+        padding: 20px;
+    }
+    .infhome-img img {
+        height: 200px;
+        padding-top: 0;
+    }
+    .img_home img,
+    .img_lembrete img {
+        width: 100%;
+        padding-top: 0;
+    }
+    .confFaq {
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+    }
+    .infoIntegrantes {
+        flex-direction: column;
+    }
+    .integrante {
+        width: 100%;
+    }
+    #faq h1,
+    #faq1,
+    .info-contato {
+        width: 90%;
+    }
+    .formulario-container {
+    width: 90%;
+    }
+    footer {
+        flex-direction: column;
+        height: auto;
+        line-height: 1.5;
+        padding: 20px;
     }
 }
 
-/*Small devices (portrait tables and large phones, 600px and up)*/
-
-@media (min-width: 600px) and (max-width: 767.9px){
+/* Responsividade para telas pequenas  */
+@media (min-width: 600px) and (max-width: 767.9px) {
     body{
-        background-color: green;
+        background-color: #d9d9d9;
+    }
+    .logo img {
+        width: 180px;
+        height: auto;
+    }
+    .header1 a {
+        font-size: 18px;
+        margin-right: 15px;
+    }
+        .menu-off-screen{
+        background-color: #cecaca;
+        height: 100vh;
+        width: 100%;
+        max-width: 450px;
+        position: fixed;
+        top: 0;
+        right: -450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 3rem;
+        transition: .3s ease;
+    }
+    .menu-off-screen.active{
+        right: 0;
+    }
+    nav{
+        padding: 1rem;
+        background-color: #cecaca;
+    }
+    #nav-mobile{
+        width: 100%;
+        height: 40px;
+        background-color: #d9d9d9;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #nav-mobile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+    }
+    #nav-mobile li a{
+        color: #09a870;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 5px 10px;
+        display: block;
+    }
+    #nav-mobile li a:hover{
+        background-color: #09a870;
+        color: #000;
+        border-radius: 5px;
+    }
+    .menu-hamburguer{
+        height: 50px;
+        width: 50px;
+        margin-left: auto;
+        position: relative;
+    }
+    .menu-hamburguer span{
+        height: 5px;
+        width: 100%;
+        background-color: #09a870;
+        border-radius: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: .3s ease; 
+    }
+    .menu-hamburguer span:nth-child(1){
+        top: 25%;
+    }
+    .menu-hamburguer span:nth-child(3){
+        top: 75%;
+    }
+    .menu-hamburguer.active span:nth-child(1){
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45dg);
+
+    }
+    .menu-hamburguer.active span:nth-child(2){
+        opacity: 0;
+    }
+    .menu-hamburguer.active span:nth-child(3){
+        top: 50%;
+        transform: translate(-50%, 50%) rotate(-45dg);
+    }
+    #nav-links{
+        display: none;
+    }
+    #infhome {
+        flex-direction: column;
+        max-width: 90%;
+        padding: 25px;
+    }
+    .img_home img,
+    .img_lembrete img {
+        width: 250px;
+        padding-top: 40px;
+    }
+    .confFaq {
+        flex-direction: column;
+        width: 90%;
+        padding: 40px;
+    }
+    .infoIntegrantes {
+        gap: 20px;
+    }
+   .integrante {
+        width: 90%;
+    }
+    #faq h1,
+    #faq1,
+    .info-contato {
+        width: 90%;
+    }
+    .formulario-container {
+        width: 90%;
+    }
+    footer {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 20px;
     }
 }

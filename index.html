@@ -24,34 +24,55 @@
                             <img src="img/logonhc.png" alt="">
                         </a>
                     </div>
-                </div>
-                <nav id="nav-links">
-                    <div class="content1">
-                        <ul id="nav-linksitens">
+                    <!-- Menu para telas de celulares-->
+                    <div class="menu-off-screen">
+                    <ul id="nav-mobile">
                             <li><a href="index.html">Home</a></li>
                             <li><a href="paginas/lembrete.html">Lembrete</a></li>
                             <li><a href="paginas/faq.html">FAQ</a></li>
                             <li><a href="paginas/checklist.html">Checklist</a></li>
                             <li><a href="paginas/integrantes.html">Integrantes</a></li>
                             <li><a href="paginas/formulario.html">Formulário</a></li>
-                        </ul>
+                    </ul>
+                </div>
+                <nav>
+                    <div class="menu-hamburguer">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
                 </nav>
+                </div>
+                <!--Nav bar para tablets e desktops-->
+                <nav id="nav-links">
+                    <div class="content1">
+                        <ul id="nav-linksitens">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="paginas/lembrete.html">Lembrete</a></li>
+                        <li><a href="paginas/faq.html">FAQ</a></li>
+                        <li><a href="paginas/checklist.html">Checklist</a></li>
+                        <li><a href="paginas/integrantes.html">Integrantes</a></li>
+                        <li><a href="paginas/formulario.html">Formulário</a></li>
+                    </ul>
+                    </div>
+                </nav>    
             </div>
         </header>
         <main>
             <div class="content">
                 <div id="infhome">
-                    <h1>Bem Vindo ao NavegaHC</h1>
+                    <div class="infhome-texto">
+                        <h1>Bem Vindo ao NavegaHC</h1>
                     <p>
                         O Navega HC é seu portal de apoio para facilitar as consultas de fisioterapia online do IMREA.
                         Aqui você encontra orientações simples, dicas para usar a tecnologia e ferramentas para
                         organizar seu tratamento. Tudo pensado para tornar sua experiência fácil, segura e eficiente,
                         ajudando você a cuidar da sua saúde com conforto e praticidade.
                     </p>
-                </div>
-                <div class="infhome-img">
-                    <img src="/img/menina_home.png">
+                    </div>
+                    <div class="infhome-img">
+                        <img src="/img/menina_home.png">
+                    </div>
                 </div>
                 <div class="chatbot">
                     <div class="ajudar">Posso te ajudar?</div>
@@ -67,6 +88,7 @@
             </p>
         </footer>
     </div>
+    <script src="/js/script-menuhamburguer.js"></script>
 </body>
 
 </html>
