@@ -1,16 +1,39 @@
 *{
     margin: 0 auto;
     padding: 0;
+    box-sizing: border-box;
 }
 #wrapper{
     min-width: 100%;
-    height: 1000px;
+    min-height: 100vh;
     background: #d9d9d9;
 }
 .content{
     width: 100%;
+    flex: 1;
 }
-
+.bt{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid black;
+    cursor:none;
+    padding: 0;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.bt img{
+    width: 126%;
+    height: 126%;
+    object-fit: contain;
+    display: block;
+}
 /*******/
 /*Index*/
 /*******/
@@ -50,7 +73,7 @@ header{
 }
 .logo img{
     padding: 10px;
-    height: 120px; 
+    height: 130px; 
     width: 200px;
     display: flex;
     float: left;
@@ -128,6 +151,9 @@ nav{
     text-align: center;
 }
 .ajudar{
+    position: fixed;
+    right: 20px;
+    bottom: 110px;
     background: #d9d9d9;
     border: 2px solid black;
     padding: 10px 14px;
@@ -138,25 +164,6 @@ nav{
     font-size: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.bt{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid black;
-    cursor: pointer;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-.bt img{
-    width: 126%;
-    height: 126%;
-    object-fit: contain;
-    display: block;
-}
 footer{
     width: 100%;
     height: 90px;
@@ -166,12 +173,10 @@ footer{
     color:#fff;
     display: flex;
     align-items: center;
-    clear: both;
-    float: none;
-    gap: 10px;
+    justify-content: center;
+    padding: 20px;
+    flex-direction: row;
 }
-
-
 /***********/
 /*Lembretes*/
 /***********/
@@ -237,7 +242,50 @@ input[type=time]{
 .enviar:hover{
     background-color: #064080;
 }
+#msg-sucesso {
+    display: none;
+    color: green;
+    font-weight: bold;
+    margin-top: 15px;
+}
 
+.modal {
+  display: none; /* oculto por padrão */
+  position: fixed;
+  z-index: 9999; /* fica acima de tudo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); /* sombra escura */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  min-width: 280px;
+  font-size: 1.2rem;
+}
+
+.modal-content button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-content button:hover {
+  background-color: #45a049;
+}
 /***********/
 /*Checklist*/
 /***********/
@@ -320,32 +368,38 @@ input[type=time]{
 .acessibilidade{
     text-align: center;
     font: Arial;
-    font-size: large;
+    font-size: 30px;
+    font-weight: bold;
 }
 .agendamento{
     text-align:center;
     font: Arial;
-    font-size: large;
+    font-size: 30px;
+    font-weight: bold;
 }
 .consulta{
     text-align:center;
     font: Arial;
-    font-size: large;
+    font-size: 30px;
+    font-weight: bold;
 }
 .institucional{
     text-align:center;
     font: Arial;
-    font-size: large;
+    font-size: 30px;
+    font-weight: bold;
 }
 .seguranca{
     text-align:center;
     font: Arial;
-    font-size: large;
+    font-size: 30px;
+    font-weight: bold;
 }
 .tecnica{
     text-align: center;
     font: Arial;
-    font-size: large;
+    font-size: 30px;
+    font-weight: bold;
 }
 #faq1{
     margin: 40px auto;
@@ -356,15 +410,21 @@ input[type=time]{
     background-color: #cecaca;
     flex-direction: column;
     align-items: center;
+    font-size: 20px;
 }
 .voltar{
     margin-top: 20px;
     height: 40px;
-    width: 100%;
+    line-height: 40px;
+    width: 20%;
+    background-color: #092d5c;
     color: #fff;
+    margin-bottom: 8px;
+    display: flex;
+    float: center;
     font-size: 16px;
     border: none;
-    cursor: pointer;
+    gap: 10px;
 }
 /*************/
 /*Integrantes*/
@@ -421,50 +481,6 @@ input[type=time]{
     height: 30px;
     display: block;
     margin-top: 15px;
-}
-#msg-sucesso {
-    display: none;
-    color: green;
-    font-weight: bold;
-    margin-top: 15px;
-}
-
-.modal {
-  display: none; /* oculto por padrão */
-  position: fixed;
-  z-index: 9999; /* fica acima de tudo */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5); /* sombra escura */
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 20px 30px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  min-width: 280px;
-  font-size: 1.2rem;
-}
-
-.modal-content button {
-  margin-top: 15px;
-  padding: 8px 16px;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.modal-content button:hover {
-  background-color: #45a049;
 }
 /*Contato*/
 #contato {
@@ -589,41 +605,6 @@ label{
 .enviar:hover{
     background-color: #064080;
 }
-.chatbot{
-    right: 30px;
-    bottom: 190px;
-    text-align: center;
-}
-.ajudar{
-    background: #d9d9d9;
-    border: 2px solid black;
-    padding: 10px 14px;
-    min-width: 160px;
-    margin-bottom: 8px;
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-.bt{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid black;
-    cursor: pointer;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-.bt img{
-    width: 126%;
-    height: 126%;
-    object-fit: contain;
-    display: block;
-}
 footer{
     width: 100%;
     height: 280px;
@@ -635,8 +616,6 @@ footer{
     align-items: center;
     clear: both;
     float: none;
-    gap: 10px;
-
 }
 /*Formulário*/
 .formulario-container {
