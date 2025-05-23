@@ -224,7 +224,7 @@ label{
     font-weight: bold;
 }
 input[type=text],
-input[tyope=num],
+input[type=num],
 input[type=date],
 input[type=time]{
     width: 100%;
