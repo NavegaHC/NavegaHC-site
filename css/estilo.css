@@ -37,7 +37,7 @@
 footer{
     width: 100%;
     height: 180px;
-    line-height: 180px;
+    line-height: 10px;
     text-align: center;
     background-color: #092d5c;
     color:#fff;
@@ -80,16 +80,20 @@ header{
     border-radius: 5px;
 }
 .header2{
-    width: 100%;
-    height: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #cecaca;
+}
+.logo{
+    margin-left: 0;
 }
 .logo img{
     padding: 10px;
     height: 130px; 
     width: 200px;
     display: flex;
-    float: left;
+    padding-left: 0;
 }
 nav{
     display: flex;
@@ -342,7 +346,7 @@ input[type=time]{
     gap: 20px;
     background-color: #cecaca;
     padding: 100px;
-    width: 1000px;
+    width: 85%;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -407,7 +411,7 @@ input[type=time]{
 #faq1{
     margin: 40px auto;
     padding: 30px;
-    width: 800px;
+    width: 75%;
     display: flex;
     border-radius: 30px;
     background-color: #cecaca;
@@ -486,7 +490,11 @@ input[type=time]{
     display: block;
     margin-top: 15px;
 }
+
+/*********/
 /*Contato*/
+/*********/
+
 #contato {
     flex: 1;
     padding: 90px 20px;
