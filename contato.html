@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/estiloTablet.css">
+    <link rel="stylesheet" href="/css/estiloDesktop.css">
+    <link rel="stylesheet" href="/css/estiloSmartphone.css">
+    <title>Contato</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="header1">
+                <a href="contato.html">Contato</a>
+            </div>
+            <div class="content">
+                <div class="header2">
+                    <div class="logo">
+                        <a href="/index.html">
+                            <img src="/img/logonhc.png" alt="">
+                        </a>
+                    </div>
+                    <!-- Menu para telas de celulares-->
+                     <div class="menu-off-screen">
+                    <ul id="nav-mobile">
+                            <li><a href="/index.html">Home</a></li>
+                            <li><a href="lembrete.html">Lembrete</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="checklist.html">Checklist</a></li>
+                            <li><a href="integrantes.html">Integrantes</a></li>
+                            <li><a href="formulario.html">Formulário</a></li>
+                    </ul>
+                </div>
+                <nav>
+                    <div class="menu-hamburguer">
+                        <div class="menu-ham barra-top"></div>
+                        <div class="menu-ham barra-mid"></div>
+                        <div class="menu-ham barra-bottom"></div>
+                    </div>
+                </nav>
+                </div>
+                 <!--Nav bar para tablets e desktops-->
+                <nav id="nav-links">
+                    <div class="content1">
+                    <ul id="nav-linksitens">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="lembrete.html">Lembrete</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="checklist.html">Checklist</a></li>
+                        <li><a href="integrantes.html">Integrantes</a></li>
+                        <li><a href="formulario.html">Formulário</a></li>
+                    </ul>
+                    </div>
+                </nav>    
+            </div>
+        </header>
+        <main id="contato">
+            <div class="content-contato">
+                <div class="info-contato">
+                    <h2>Entre em contato conosco</h2>
+                    <form name="frmcontato" id="frmcontato">
+                        <div class="lista-contato">
+                            <br>
+                            <label>Nome Completo:
+                                <br>
+                                <input type="text" name="nomeCompleto" id="nomeCompleto" required>
+                            </label>
+                            <br>
+                            <label>Número (Telefone):
+                                <br>
+                                <input type="text" name="numTel" id="numTel" required>
+                            </label>
+                            <br>
+                            <label>E-mail:
+                                <br>
+                                <input type="text" name="email" id="email" required>
+                            </label>
+                            <br>
+                            <div class="redes">
+                                <a href="https://www.instagram.com/redelucymontoro/"><img src="/img/instagram.png"></a>
+                                <a href="https://web.facebook.com/redelucymontoro?_rdc=1&_rdr#"><img src="/img/facebook.png"></a>
+                            </div>
+                        </div>
+                        <button type="submit" class="enviar">Enviar</button>
+                    </form>
+
+                    <div id="msg-sucesso">Lembrete criado com sucesso!</div>
+
+                    <script src="/js/script-checklist.js"></script>
+
+                </div>
+                <div class="chatbot">
+                    <button class="bt"><img src="/img/chatbotnhc.png"></button>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>
+                &copy;2025 NavegaHC - Todos os Direitos Reservados
+            </p>
+        </footer>
+    </div>
+    <script src="/js/script-menuhamburguer.js"></script>
+</body>
+
+</html>
+</body>
+
+</html>
