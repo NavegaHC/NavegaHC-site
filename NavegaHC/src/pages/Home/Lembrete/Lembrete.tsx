@@ -30,31 +30,31 @@ const Lembrete = () => {
 
     return(
         <>
-        <h1 className="font-bold"> Lembrete </h1>
-        <form onSubmit={(e) => e.preventDefault}>
-            <label>Nome Completo:
-                <input type="text" value={ nomeCompleto } onChange={ handleChange } />
-            </label>
-            <label>Número (Telefone):
-                <input type="num" value={ numTel} onChange={handleChange} />
-            </label>
-            <label>Dia da consulta:
-                <input type="date" value={ diaConsulta } onChange={handleChange} />
-            </label>
-            <label>Hora da consulta:
-                <input type="time" value= { horaConsulta } onChange={handleChange} />
-            </label>
-
-            <button type="button" onClick={handleSubmit}>Mostrar nome</button>
-            <button type="button" onClick={handleSubmit}>Mostrar telefone0</button>
-            <button type="button" onClick={handleSubmit}>Mostrar dia</button>
-            <button type="button" onClick={handleSubmit}>Mostrar hora</button>
-        </form>
-        {nomeExibido && <p><b>Nome digitado</b>: {nomeExibido} </p>}
-        {numExibido && <p><b>Telefone digitado</b>: {numExibido} </p>}
-        {diaExibido && <p><b>Dia digitado</b>: {diaExibido} </p>}
-        {horaExibido && <p><b>Horário digitado</b>: {horaExibido} </p>}
-        
+        <div className="min-h-screen flex flex-col">
+            <h1 className="font-bold"> Lembrete </h1>
+            <form onSubmit={(e) => e.preventDefault}>
+                <label>Nome Completo:
+                    <input type="text" value={ nomeCompleto } onChange={ handleChange } />
+                </label>
+                <button type="button" onClick={handleSubmit}>Mostrar nome</button>
+                <label>Número (Telefone):
+                    <input type="num" value={ numTel} onChange={handleChange} />
+                </label>
+               <button type="button" onClick={handleSubmit}>Mostrar telefone0</button>
+                <label>Dia da consulta:
+                    <input type="date" value={ diaConsulta } onChange={handleChange} />
+                </label>
+                <button type="button" onClick={handleSubmit}>Mostrar dia</button>
+                <label>Hora da consulta:
+                    <input type="time" value= { horaConsulta } onChange={handleChange} />
+                </label>
+                <button type="button" onClick={handleSubmit}>Mostrar hora</button>
+            </form>
+            {nomeExibido && <p><b>Nome digitado</b>: {nomeExibido} </p>}
+            {numExibido && <p><b>Telefone digitado</b>: {numExibido} </p>}
+            {diaExibido && <p><b>Dia digitado</b>: {diaExibido} </p>}
+            {horaExibido && <p><b>Horário digitado</b>: {horaExibido} </p>}
+        </div>
         </>
     );
 }
