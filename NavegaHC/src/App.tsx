@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#d9d9d9]">
     <BrowserRouter>
     <Cabecalho />
     <main className="p-4">

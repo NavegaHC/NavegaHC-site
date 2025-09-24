@@ -1,23 +1,85 @@
-import { Link } from "react-router-dom"
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Cabecalho(){
-    return(
-        <>
-            <header className="bg-[#cecaca] text-white p-0">
-                <div className="flex justify-between items-center">
-                    <img src="public/img/logonhc.png" alt="Logo NavegaHC" className="p-2 h-[130px] w-[200px]"></img>
-                    <nav className="flex gap-7 p-4 text-[#09a870]">
-                        <Link to="/home" className="hover:text-[#000] font-bold">Home</Link>
-                        <Link to="/lembrete" className=" hover:text-[#000] font-bold">Lembrete</Link>
-                        <Link to="/faq" className="hover:text-[#000] font-bold">FAQ</Link>
-                        <Link to="/checklist" className="hover:text-[#000] font-bold">Checklist</Link>
-                        <Link to="/integrantes" className="hover:text-[#000] font-bold">Integrantes</Link>
-                        <Link to="/form" className="hover:text-[#000] font-bold">Formulário</Link>
-                        <Link to="/contato" className="hover:text-[#000] font-bold">Contato</Link>
-                    </nav>
-                </div>
-            </header>
-        </>
-    )
+function Cabecalho() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const links = [
+    { to: "/home", label: "Home" },
+    { to: "/lembrete", label: "Lembrete" },
+    { to: "/faq", label: "FAQ" },
+    { to: "/checklist", label: "Checklist" },
+    { to: "/integrantes", label: "Integrantes" },
+    { to: "/form", label: "Formulário" },
+    { to: "/contato", label: "Contato" },
+  ];
+
+  return (
+    <>
+    <header className="bg-[#cecaca] shadow-md">
+      <div className="w-full mx-auto flex justify-between items-center p-4">
+        {/* Logo */}
+        <img
+          src="public/img/logonhc.png"
+          alt="Logo NavegaHC"
+          className="h-32.5 w-50 sm:h-24 sm:w-48"
+        />
+
+        {/* Menu desktop */}
+        <nav className="hidden md:flex gap-6 text-green-600 font-bold">
+          {links.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="hover:text-black transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Botão hambúrguer para mobile */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex flex-col justify-between h-6 w-8"
+          >
+            <span
+              className={`block h-0.5 w-full bg-[#09a870] transform transition duration-300 ${
+                menuOpen ? "rotate-45 translate-y-2" : ""
+              }`}
+            ></span>
+            <span
+              className={`block h-0.5 w-full bg-[#09a870] transition-opacity duration-300 ${
+                menuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            ></span>
+            <span
+              className={`block h-0.5 w-full bg-[#09a870] transform transition duration-300 ${
+                menuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            ></span>
+          </button>
+        </div>
+      </div>
+
+      {/* Menu mobile */}
+      {menuOpen && (
+        <nav className="md:hidden bg-[#d9d9d9] w-full flex flex-col items-center gap-4 py-6 text-[#09a870] font-bold text-4xl h-full">
+          {links.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => setMenuOpen(false)}
+              className="hover:text-black transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      )}
+    </header>
+    </>
+  );
 }
 export default Cabecalho;
