@@ -2,7 +2,6 @@ function Home() {
   return (
     <section className="min-h-screen flex items-center justify-center bg-gray-200 rounded-2xl px-6">
       <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10 items-center">
-        {/* Texto */}
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight">
             Bem-vindo ao <span className="text-[#092d5c]">NavegaHC</span>

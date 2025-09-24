@@ -1,25 +1,24 @@
 import { useState } from "react";
 
 export default function FormularioPage() {
-  const [mensagem, setMensagem] = useState("");
+  const [mensagem, setMensagem] = useState(false);
 
   const mostrarMensagem = (e: React.FormEvent) => {
     e.preventDefault();
-    setMensagem("✅ Formulário enviado com sucesso!");
+    setMensagem(true);
+
+    // fecha sozinho depois de 4s
+    setTimeout(() => {
+      setMensagem(false);
+    }, 4000);
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-100 py-10 px-4">
-      <section className="w-full max-w-3xl bg-white shadow-lg rounded-2xl p-8">
-        <h2 className="text-2xl font-bold text-center mb-6 text-blue-700">
+    <div className="flex flex-col items-center min-h-screen bg-gray-200 rounded-2xl py-10 px-4">
+      <section className="w-full max-w-3xl bg-gray-100 rounded-2xl shadow-lg p-8">
+        <h2 className="text-3xl font-bold text-center mb-6 text-[#092d5c]">
           Formulário NavegaHC
         </h2>
-
-        {mensagem && (
-          <div className="mb-6 p-3 text-green-800 bg-green-100 border border-green-300 rounded-lg text-center">
-            {mensagem}
-          </div>
-        )}
 
         <form className="space-y-6" onSubmit={mostrarMensagem}>
           {/* Usuário */}
@@ -187,21 +186,40 @@ export default function FormularioPage() {
 
           {/* Informações */}
           <fieldset className="border border-gray-300 rounded-lg p-4">
-            <legend className="text-lg font-semibold text-gray-700">Informações do Formulário</legend>
+            <legend className="text-lg font-semibold text-gray-700">
+              Informações do Formulário
+            </legend>
             <p className="text-gray-600">
-              Este é um Formulário de Feedback sobre o site NavegaHC, que tem como objetivo recolher
-              informações para o melhor desenvolvimento do site.
+              Este é um Formulário de Feedback sobre o site NavegaHC, que tem como objetivo
+              recolher informações para o melhor desenvolvimento do site.
             </p>
           </fieldset>
 
           <button
             type="submit"
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition duration-300"
+            className="flex justify-center w-3/4 mx-auto bg-[#092d5c] text-white font-bold py-2 rounded hover:bg-blue-900"
           >
             Enviar
           </button>
         </form>
       </section>
+
+      {/* Modal de sucesso */}
+      {mensagem && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
+            <h2 className="text-lg font-bold text-green-700 mb-4">
+              ✅ Formulário enviado com sucesso!
+            </h2>
+            <button
+              onClick={() => setMensagem(false)}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

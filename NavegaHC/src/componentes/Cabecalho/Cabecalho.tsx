@@ -39,23 +39,23 @@ function Cabecalho() {
 
         {/* Botão hambúrguer para mobile */}
         <div className="md:hidden">
-          <button
+          <button 
             onClick={() => setMenuOpen(!menuOpen)}
-            className="flex flex-col justify-between h-6 w-8"
+            className="flex flex-col justify-between h-6 w-7"
           >
             <span
-              className={`block h-0.5 w-full bg-[#092d5c] transform transition duration-300 ${
-                menuOpen ? "rotate-45 translate-y-2" : ""
+              className={`block h-1 w-full bg-[#092d5c] transform transition duration-300 ${
+                menuOpen ? "rotate-45 translate-y-2.5" : ""
               }`}
             ></span>
             <span
-              className={`block h-0.5 w-full bg-[#092d5c] transition-opacity duration-300 ${
+              className={`block h-1 w-full bg-[#092d5c] transition-opacity duration-300 ${
                 menuOpen ? "opacity-0" : "opacity-100"
               }`}
             ></span>
             <span
-              className={`block h-0.5 w-full bg-[#092d5c] transform transition duration-300 ${
-                menuOpen ? "-rotate-45 -translate-y-2" : ""
+              className={`block h-1 w-full bg-[#092d5c] transform transition duration-300 ${
+                menuOpen ? "-rotate-45 -translate-y-2.5" : ""
               }`}
             ></span>
           </button>
@@ -64,13 +64,13 @@ function Cabecalho() {
 
       {/* Menu mobile */}
       {menuOpen && (
-        <nav className="md:hidden bg-[#d9d9d9] w-full flex flex-col items-center gap-4 py-6 text-[#092d5c] font-bold text-4xl h-full">
+        <nav className="md:hidden bg-[#d9d9d9] w-full flex flex-col items-center gap-4 py-6 text-[#092d5c] font-bold text-2xl h-full">
           {links.map((link) => (
             <Link
               key={link.to}
               to={link.to}
               onClick={() => setMenuOpen(false)}
-              className="hover:text-black transition-colors"
+              className="hover:bg-gray-100 rounded-xl p-2.5 hover:text-blue-900 transition-colors"
             >
               {link.label}
             </Link>

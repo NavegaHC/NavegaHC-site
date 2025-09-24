@@ -28,7 +28,8 @@ function Integrantes() {
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-200 rounded-2xl">
-      <h1 className="text-4xl font-bold mb-8 text-gray-800">Integrantes</h1>
+      <br />
+      <h1 className="text-4xl font-bold mb-8 text-[#092d5c]">Integrantes</h1>
 
       <div className="grid gap-8 md:grid-cols-3 sm:grid-cols-1">
         {integrantes.map((pessoa, index) => (

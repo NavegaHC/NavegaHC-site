@@ -72,10 +72,10 @@ export default function Contato() {
             </div>
             
             <div className="flex gap-4 justify-center mt-4">
-              <a href="https://www.instagram.com/redelucymontoro/" target="_blank">
+              <a href="https://www.instagram.com/redelucymontoro/" target="_blank" rel="noopener">
                 <img src="/public/img/instagram.png" alt="Instagram" className="h-14 w-14" />
               </a>
-              <a href="https://web.facebook.com/redelucymontoro?_rdc=1&_rdr#" target="_blank">
+              <a href="https://web.facebook.com/redelucymontoro?_rdc=1&_rdr#" target="_blank " rel="noopener">
                 <img src="/public/img/facebook.png" alt="Facebook" className="h-14 w-14" />
               </a>
             </div>
