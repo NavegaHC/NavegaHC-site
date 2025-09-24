@@ -17,10 +17,10 @@ export default function Checklist() {
   const allChecked = Object.values(checkedItems).every(Boolean);
 
   return (
-    <main id="checklist" className="flex flex-col min-h-screen bg-gray-100">
+    <main id="checklist" className="flex flex-col min-h-screen rounded-2xl bg-gray-200">
       <div
         id="checklist-box"
-        className="max-w-2xl mx-auto mt-10 bg-white rounded-lg shadow-md p-6"
+        className="max-w-xl mx-auto justify-center mt-10 bg-white rounded-lg shadow-md p-6"
       >
         <h1 className="text-2xl font-bold text-center mb-6">
           Checklist para sua Consulta de Fisioterapia - IMREA
@@ -100,7 +100,7 @@ export default function Checklist() {
           {allChecked && (
             <div
               id="message"
-              className="mt-6 text-green-600 font-bold text-center"
+              className="mt-6 text-green-800 font-bold text-center"
             >
               ✔️ Checklist concluído!
             </div>

@@ -23,14 +23,19 @@ export default function LembreteCompleto() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center bg-gray-200 rounded py-10">
+    <main className="w-full grid md:grid-cols-2 gap-10 items-center">
+      <div className="flex justify-center">
+          <img
+            src="/img/menina_lembrete.png"
+            alt="Ilustração de menina usando ceular"
+            className="max-w-xs md:max-w-md rounded-2xl"
+          />
+        </div>
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
-        <h2 className="text-2xl font-bold text-center mb-6 text-blue-700">
-          Criar Lembrete
-        </h2>
+        <h1 className="text-2xl font-bold text-center mb-6 text-[#092d5c]">Criar Lembrete</h1>
 
         {success && (
-          <div className="text-center text-green-600 font-bold mb-4 p-2 border border-green-600 rounded">
+          <div className="text-center text-green-800 font-bold mb-4 p-2 border border-green-800 rounded">
             ✅ Lembrete criado com sucesso!
           </div>
         )}
@@ -98,7 +103,7 @@ export default function LembreteCompleto() {
 
           <button
             type="submit"
-            className="flex justify-center w-3/4 mx-auto bg-blue-600 text-white text-center font-bold py-2 rounded hover:bg-blue-700 transition"
+            className="flex justify-center w-3/4 mx-auto bg-[#092d5c] text-white text-center font-bold py-2 rounded hover:bg-blue-900 transition"
           >
             Salvar Lembrete
           </button>

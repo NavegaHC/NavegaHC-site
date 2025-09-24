@@ -10,7 +10,7 @@ const FAQItem = ({ title, question, answer, question2, answer2 }) => {
         onClick={() => setOpen(!open)}
         className="w-full flex justify-between items-center bg-gray-200 p-3 rounded-lg hover:bg-gray-400 focus:outline-none"
       >
-        <span className="font-bold text-left">{title}</span>
+        <span className="font-bold text-xl text-left">{title}</span>
         <span
           className={`ml-2 transform transition-transform duration-300 ${
             open ? "rotate-180" : ""

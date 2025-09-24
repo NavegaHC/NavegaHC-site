@@ -73,16 +73,16 @@ export default function Contato() {
             
             <div className="flex gap-4 justify-center mt-4">
               <a href="https://www.instagram.com/redelucymontoro/" target="_blank">
-                <img src="/public/img/instagram.png" alt="Instagram" className="h-8 w-8" />
+                <img src="/public/img/instagram.png" alt="Instagram" className="h-14 w-14" />
               </a>
               <a href="https://web.facebook.com/redelucymontoro?_rdc=1&_rdr#" target="_blank">
-                <img src="/public/img/facebook.png" alt="Facebook" className="h-8 w-8" />
+                <img src="/public/img/facebook.png" alt="Facebook" className="h-14 w-14" />
               </a>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-[#09a870] text-white font-bold py-2 rounded hover:bg-green-700"
+              className="flex justify-center w-3/4 mx-auto bg-[#092d5c] text-white font-bold py-2 rounded hover:bg-blue-900"
             >
               Enviar
             </button>

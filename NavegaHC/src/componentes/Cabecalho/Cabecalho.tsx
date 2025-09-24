@@ -18,7 +18,6 @@ function Cabecalho() {
     <>
     <header className="bg-[#cecaca] shadow-md">
       <div className="w-full mx-auto flex justify-between items-center p-4">
-        {/* Logo */}
         <img
           src="public/img/logonhc.png"
           alt="Logo NavegaHC"
@@ -26,12 +25,12 @@ function Cabecalho() {
         />
 
         {/* Menu desktop */}
-        <nav className="hidden md:flex gap-6 text-green-600 font-bold">
+        <nav className="hidden md:flex gap-8 p-4 text-[#092d5c] font-bold text-xl">
           {links.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className="hover:text-black transition-colors"
+              className="hover:bg-gray-100 rounded-xl p-2.5 hover:text-blue-900 transition-colors"
             >
               {link.label}
             </Link>
@@ -45,17 +44,17 @@ function Cabecalho() {
             className="flex flex-col justify-between h-6 w-8"
           >
             <span
-              className={`block h-0.5 w-full bg-[#09a870] transform transition duration-300 ${
+              className={`block h-0.5 w-full bg-[#092d5c] transform transition duration-300 ${
                 menuOpen ? "rotate-45 translate-y-2" : ""
               }`}
             ></span>
             <span
-              className={`block h-0.5 w-full bg-[#09a870] transition-opacity duration-300 ${
+              className={`block h-0.5 w-full bg-[#092d5c] transition-opacity duration-300 ${
                 menuOpen ? "opacity-0" : "opacity-100"
               }`}
             ></span>
             <span
-              className={`block h-0.5 w-full bg-[#09a870] transform transition duration-300 ${
+              className={`block h-0.5 w-full bg-[#092d5c] transform transition duration-300 ${
                 menuOpen ? "-rotate-45 -translate-y-2" : ""
               }`}
             ></span>
@@ -65,7 +64,7 @@ function Cabecalho() {
 
       {/* Menu mobile */}
       {menuOpen && (
-        <nav className="md:hidden bg-[#d9d9d9] w-full flex flex-col items-center gap-4 py-6 text-[#09a870] font-bold text-4xl h-full">
+        <nav className="md:hidden bg-[#d9d9d9] w-full flex flex-col items-center gap-4 py-6 text-[#092d5c] font-bold text-4xl h-full">
           {links.map((link) => (
             <Link
               key={link.to}
