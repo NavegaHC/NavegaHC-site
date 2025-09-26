@@ -7,7 +7,9 @@ import Checklist from "./pages/Home/Checklist/Checklist"
 import Integrantes from "./pages/Home/Integrantes/Integrantes"
 import Formulario from "./pages/Home/Formulario/Formulario"
 import Contato from "./pages/Home/Contato/Contato"
-import Footer from "./componentes/Cabecalho/Footer/Footer"
+import Botao_chat from "./componentes/Botao_chat/Botao_chat"
+import Botao_acessibilidade from "./componentes/Botao_acessibilidade/Botao_acessibildade"
+import Footer from "./componentes/Footer/Footer"
 
 function App() {
 
@@ -28,6 +30,8 @@ function App() {
       </Routes>
     </main>
     </BrowserRouter>
+    <Botao_acessibilidade />
+    <Botao_chat />
     <Footer />
     </div>
     </>

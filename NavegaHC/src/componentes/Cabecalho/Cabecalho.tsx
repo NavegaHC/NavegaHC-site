@@ -24,7 +24,7 @@ function Cabecalho() {
           className="h-32.5 w-50 sm:h-24 sm:w-48"
         />
 
-        {/* Menu desktop */}
+        {/* Menu para telas maiores */}
         <nav className="hidden md:flex gap-8 p-4 text-[#092d5c] font-bold text-xl">
           {links.map((link) => (
             <Link
@@ -37,9 +37,9 @@ function Cabecalho() {
           ))}
         </nav>
 
-        {/* Botão hambúrguer para mobile */}
+        {/* Botão hamburguer */}
         <div className="md:hidden">
-          <button 
+          <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="flex flex-col justify-between h-6 w-7"
           >
@@ -62,9 +62,9 @@ function Cabecalho() {
         </div>
       </div>
 
-      {/* Menu mobile */}
+      {/* Menu para telas de celulares */}
       {menuOpen && (
-        <nav className="md:hidden bg-[#d9d9d9] w-full flex flex-col items-center gap-4 py-6 text-[#092d5c] font-bold text-2xl h-full">
+        <nav className="md:hidden bg-[#d9d9d9] w-full flex flex-col items-center gap-4 py-6 text-[#092d5c] font-bold text-2xl">
           {links.map((link) => (
             <Link
               key={link.to}
