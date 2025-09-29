@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom" 
 import Cabecalho from "./componentes/Cabecalho/Cabecalho"
-import Home from "./pages/Home/Home"
+import Home from "./pages/Home/Home/Home"
 import Lembrete from "./pages/Home/Lembrete/Lembrete"
 import Faq from "./pages/Home/Faq/Faq"
 import Checklist from "./pages/Home/Checklist/Checklist"
