@@ -14,18 +14,42 @@ com deficiência.
 ## Estrutura de pastas e arquivos
 
 projeto
+    public/
+    src/
+        components/
+            Botao_acessibilidade/
+                arquivo tsx
+            Botao_chat/
+                arquivo tsx
+            Cabecalho/
+                arquivo tsx
+            Footer/
+                arquivo tsx
+        pages/
+            Checklist/
+                arquivo tsx
+            Contato/
+                arquivo tsx
+            Faq/
+                arquivo tsx
+            Formulario/
+                arquivo tsx
+            Home/
+                arquivo tsx
+            Integrantes/
+                arquivo tsx
+            Lembrete/
+                arquivo tsx
+        App.tsx 
+        index.css
+        main.tsx
+    vite-env.d.ts
+    eslint.config.js
+    index.html
+    package.json
+    package-lock.json
+    .gitignore
 
-    css
-        arquivo de estilo
-    img
-        pasta de imagens (png/jpeg)
-    js
-        arquivo de script
-    paginas
-        paginas-faq
-            arquivos HTML da página de perguntas frequentes(faq)
-        arquivos HTML das demais páginas
-    arquivo HTML principal
 
 
 ## Tecnologia Utilizada
@@ -33,6 +57,10 @@ projeto
     HTML: Utilizado para criar o código fonte dos arquivos HTML.
     CSS: Estilização visual e responsividade.
     JavaScript: Utilizado para adicionar funcionalidades interativas.
+    Vite: Bundler rápido para desenvolvimento front-end.
+    React: Biblioteca para construção da interface.
+    TypeScript: Superset do JavaScript com tipagem estática.
+    TailwindCSS: Framework de estilização utilitária.
 
 ## Integrantes
 
