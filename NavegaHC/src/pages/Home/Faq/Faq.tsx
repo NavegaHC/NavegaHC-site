@@ -1,8 +1,16 @@
+// src/components/FAQ.tsx
 import { useState } from "react";
 
-const FAQItem = ({ title, question, answer, question2, answer2 }) => {
+interface FAQItemProps {
+  title: string;
+  question: string;
+  answer: string;
+  question2: string;
+  answer2: string;
+}
 
-  const [open, setOpen] = useState(false);
+const FAQItem: React.FC<FAQItemProps> = ({ title, question, answer, question2, answer2 }) => {
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <div className="mb-4">
@@ -21,7 +29,7 @@ const FAQItem = ({ title, question, answer, question2, answer2 }) => {
       </button>
 
       {open && (
-        <div className="mt-2 space-y-3 text-gray-700 bg-gray-200 rounded-2xl text-left p-1.5">
+        <div className="mt-2 space-y-3 text-gray-700 bg-gray-200 rounded-2xl text-left p-2">
           <div>
             <h3 className="font-medium">{question}</h3>
             <p>{answer}</p>
@@ -36,50 +44,62 @@ const FAQItem = ({ title, question, answer, question2, answer2 }) => {
   );
 };
 
+interface FAQData {
+  title: string;
+  question: string;
+  answer: string;
+  question2: string;
+  answer2: string;
+}
+
 export default function FAQ() {
-  const faqs = [
+  const faqs: FAQData[] = [
     {
       title: "Técnica",
       question: "1. A câmera não está funcionando, o que faço?",
-      answer: "Veja se a câmera está liberada. Quando o site pedir, clique em Permitir. Se não aparecer nada, peça ajuda para alguém atualizar o computador ou o celular.",
+      answer:
+        "Veja se a câmera está liberada. Quando o site pedir, clique em Permitir. Se não aparecer nada, peça ajuda para alguém atualizar o computador ou o celular.",
       question2: "2. Posso usar o celular para a consulta?",
-      answer2: "Sim! Você pode usar o celular, tablet ou computador. Só precisa ter câmera, microfone e internet funcionando."
+      answer2:
+        "Sim! Você pode usar o celular, tablet ou computador. Só precisa ter câmera, microfone e internet funcionando.",
     },
     {
       title: "Acessibilidade",
       question: "1. Tem tradução em Libras na plataforma?",
       answer: "Ainda não tem, mas estamos trabalhando para colocar isso em breve.",
       question2: "2. Dá para aumentar o tamanho das letras?",
-      answer2: "Sim! Você pode usar o zoom do navegador para deixar tudo maior e mais fácil de ler."
+      answer2: "Sim! Você pode usar o zoom do navegador para deixar tudo maior e mais fácil de ler.",
     },
     {
       title: "Agendamento",
       question: "1. Como cancelo uma consulta?",
       answer: "Você precisa falar direto com a unidade do IMREA que marcou sua consulta.",
       question2: "2. E se eu me atrasar para a consulta?",
-      answer2: "Tente entrar mesmo assim. Se não conseguir, fale com a unidade para saber o que fazer."
+      answer2: "Tente entrar mesmo assim. Se não conseguir, fale com a unidade para saber o que fazer.",
     },
     {
       title: "Consulta",
       question: "1. Quanto tempo dura a consulta online?",
       answer: "A consulta dura mais ou menos 30 minutos. Pode ser mais ou menos, dependendo do seu caso.",
       question2: "2. Preciso estar com alguém na hora da consulta?",
-      answer2: "Se for difícil para você andar ou se comunicar, é bom ter alguém junto para ajudar."
+      answer2:
+        "Se for difícil para você andar ou se comunicar, é bom ter alguém junto para ajudar.",
     },
     {
       title: "Segurança",
       question: "1. Quem pode ver meus dados?",
       answer: "Só profissionais do IMREA, e tudo segue a lei de proteção de dados.",
       question2: "2. É seguro clicar no link da consulta que chega por e-mail?",
-      answer2: "Sim, se o e-mail for mesmo do IMREA. Sempre veja quem mandou antes de clicar."
+      answer2:
+        "Sim, se o e-mail for mesmo do IMREA. Sempre veja quem mandou antes de clicar.",
     },
     {
       title: "Institucional",
       question: "1. O que é o IMREA?",
       answer: "É um instituto do Hospital das Clínicas que cuida da reabilitação de pacientes.",
       question2: "2. Quais lugares fazem parte do IMREA?",
-      answer2: "Clínicas, Aclimação, Vila Mariana, Lapa e outros locais. Veja mais na parte de contatos."
-    }
+      answer2: "Clínicas, Aclimação, Vila Mariana, Lapa e outros locais. Veja mais na parte de contatos.",
+    },
   ];
 
   return (
