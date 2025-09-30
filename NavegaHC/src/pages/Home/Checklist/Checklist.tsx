@@ -29,7 +29,7 @@ export default function Checklist() {
       className="flex flex-col min-h-screen items-center justify-center bg-gray-200 rounded-2xl p-6"
     >
       <div className="w-full max-w-xl bg-white rounded-xl shadow-lg p-6">
-        <h1 className="text-2xl font-bold text-center mb-6 text-[#092d5c]">
+        <h1 className="text-[1.5rem] font-bold text-center mb-6 text-[#092d5c]">
           Checklist para sua Consulta de Fisioterapia - IMREA
         </h1>
 

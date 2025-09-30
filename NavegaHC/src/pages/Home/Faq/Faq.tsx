@@ -18,7 +18,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ title, question, answer, question2, a
         onClick={() => setOpen(!open)}
         className="w-full flex justify-between items-center bg-gray-200 p-3 rounded-lg hover:bg-gray-400 focus:outline-none"
       >
-        <span className="font-bold text-xl text-left">{title}</span>
+        <span className="font-bold text-[1.125rem] text-left">{title}</span>
         <span
           className={`ml-2 transform transition-transform duration-300 ${
             open ? "rotate-180" : ""
@@ -68,7 +68,7 @@ export default function FAQ() {
       question: "1. Tem tradução em Libras na plataforma?",
       answer: "Ainda não tem, mas estamos trabalhando para colocar isso em breve.",
       question2: "2. Dá para aumentar o tamanho das letras?",
-      answer2: "Sim! Você pode usar o zoom do navegador para deixar tudo maior e mais fácil de ler.",
+      answer2: "Sim! Você pode aumetar ou diminuir a fonte do site clicando no botão de acessibilidade no canto inferior esquerdo da página que lhe dará as opções de aumentar ou diminuir as letras",
     },
     {
       title: "Agendamento",

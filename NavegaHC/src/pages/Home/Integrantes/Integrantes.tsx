@@ -29,7 +29,7 @@ function Integrantes() {
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-200 rounded-2xl">
       <br />
-      <h1 className="text-4xl font-bold mb-8 text-[#092d5c]">Integrantes</h1>
+      <h1 className="text-[2.25rem] font-bold mb-8 text-[#092d5c]">Integrantes</h1>
 
       <div className="grid gap-8 md:grid-cols-3 sm:grid-cols-1">
         {integrantes.map((pessoa, index) => (
@@ -42,9 +42,9 @@ function Integrantes() {
               alt={pessoa.nome}
               className="w-45 h-45 rounded-full object-cover shadow-md mb-4"
             />
-            <h3 className="text-xl font-semibold text-gray-700">{pessoa.nome}</h3>
+            <h3 className="text-[1.25rem] font-semibold text-gray-700">{pessoa.nome}</h3>
             <p className="text-gray-600">{pessoa.rm}</p>
-            <p className="text-gray-00 mb-4">Turma: {pessoa.turma}</p>
+            <p className="text-gray-600 mb-4">Turma: {pessoa.turma}</p>
             <div className="flex gap-4">
               <a
                 href={pessoa.github}

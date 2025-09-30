@@ -14,7 +14,7 @@ const ControleFonte: React.FC = () => {
 
   // aplica o tamanho da fonte em TODO o body
   useEffect(() => {
-    document.body.style.fontSize = `${fontSize}px`;
+    document.documentElement.style.fontSize = `${fontSize}px`;
   }, [fontSize]);
 
   return (
@@ -28,7 +28,7 @@ const ControleFonte: React.FC = () => {
       </button>
 
       {mostrar && (
-        <div className="mt-2 flex gap-2 bg-white p-1 rounded-lg shadow-md z-10">
+        <div className="m-10 flex gap-2 bg-white p-1 rounded-lg shadow-md">
           <button
             onClick={aumentarFonte}
             className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"

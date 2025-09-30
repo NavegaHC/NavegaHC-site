@@ -23,7 +23,6 @@ const Cabecalho: React.FC = () => {
   return (
     <header className="bg-[#cecaca] shadow-md">
       <div className="w-full mx-auto flex justify-between items-center p-4">
-        {/* Logo */}
         <img
           src="/img/logonhc.png"
           alt="Logo NavegaHC"
@@ -31,7 +30,7 @@ const Cabecalho: React.FC = () => {
         />
 
         {/* Menu para telas maiores */}
-        <nav className="hidden md:flex gap-8 p-4 text-[#092d5c] font-bold text-xl">
+        <nav className="hidden lg:flex gap-8 p-4 text-[#092d5c] font-bold text-xl">
           {links.map((link: NavLink) => (
             <Link
               key={link.to}
@@ -44,7 +43,7 @@ const Cabecalho: React.FC = () => {
         </nav>
 
         {/* Botão hamburguer */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="flex flex-col justify-between h-6 w-7"
@@ -70,7 +69,7 @@ const Cabecalho: React.FC = () => {
 
       {/* Menu mobile */}
       {menuOpen && (
-        <nav className="md:hidden bg-[#d9d9d9] w-full flex flex-col items-center gap-4 py-6 text-[#092d5c] font-bold text-2xl">
+        <nav className="lg:hidden bg-[#d9d9d9] w-full flex flex-col items-center gap-4 py-6 text-[#092d5c] font-bold text-[1.5rem]">
           {links.map((link: NavLink) => (
             <Link
               key={link.to}

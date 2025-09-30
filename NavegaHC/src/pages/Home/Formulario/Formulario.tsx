@@ -16,14 +16,26 @@ export default function FormularioPage() {
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-200 rounded-2xl py-10 px-4">
       <section className="w-full max-w-3xl bg-gray-100 rounded-2xl shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-center mb-6 text-[#092d5c]">
+        <h2 className="text-[1.875rem] font-bold text-center mb-6 text-[#092d5c]">
           Formulário NavegaHC
         </h2>
 
         <form className="space-y-6" onSubmit={mostrarMensagem}>
+          
+          {/* Informações */}
+          <fieldset className="border border-gray-300 rounded-lg p-4">
+            <legend className="text-[1.125rem] font-semibold text-gray-700">
+              Informações do Formulário
+            </legend>
+            <p className="text-gray-600">
+              Este é um Formulário de Feedback sobre o site NavegaHC, que tem como objetivo
+              recolher informações para o melhor desenvolvimento do site.
+            </p>
+          </fieldset>
+
           {/* Usuário */}
           <fieldset className="border border-gray-300 rounded-lg p-4">
-            <legend className="text-lg font-semibold text-gray-700">Usuário</legend>
+            <legend className="text-[1.125rem] font-semibold text-gray-700">Usuário</legend>
             <label htmlFor="nome" className="block mt-2 font-medium">
               Informe seu nome:
             </label>
@@ -49,7 +61,7 @@ export default function FormularioPage() {
 
           {/* Dispositivo */}
           <fieldset className="border border-gray-300 rounded-lg p-4">
-            <legend className="text-lg font-semibold text-gray-700">Dispositivo Acesso</legend>
+            <legend className="text-[1.125rem] font-semibold text-gray-700">Dispositivo Acesso</legend>
             <label htmlFor="dispositivo" className="block mt-2 font-medium">
               Tipo de dispositivo:
             </label>
@@ -75,7 +87,7 @@ export default function FormularioPage() {
 
           {/* Feedback */}
           <fieldset className="border border-gray-300 rounded-lg p-4">
-            <legend className="text-lg font-semibold text-gray-700">Feedback</legend>
+            <legend className="text-[1.125rem] font-semibold text-gray-700">Feedback</legend>
             <label htmlFor="experiencia" className="block mt-2 font-medium">
               Como foi sua experiência?
             </label>
@@ -101,7 +113,7 @@ export default function FormularioPage() {
 
           {/* Dificuldade */}
           <fieldset className="border border-gray-300 rounded-lg p-4">
-            <legend className="text-lg font-semibold text-gray-700">Dificuldade</legend>
+            <legend className="text-[1.125rem] font-semibold text-gray-700">Dificuldade</legend>
             <label htmlFor="infoDificuldade" className="block mt-2 font-medium">
               Tipo de dificuldade:
             </label>
@@ -127,7 +139,7 @@ export default function FormularioPage() {
 
           {/* Pergunta Principal */}
           <fieldset className="border border-gray-300 rounded-lg p-4">
-            <legend className="text-lg font-semibold text-gray-700">Pergunta Principal</legend>
+            <legend className="text-[1.125rem] font-semibold text-gray-700">Pergunta Principal</legend>
             <label htmlFor="perg-princ" className="block mt-2 font-medium">
               Você gostou do site NavegaHC?
             </label>
@@ -142,7 +154,7 @@ export default function FormularioPage() {
 
           {/* Tempo de Uso */}
           <fieldset className="border border-gray-300 rounded-lg p-4">
-            <legend className="text-lg font-semibold text-gray-700">Tempo de Uso</legend>
+            <legend className="text-[1.125rem] font-semibold text-gray-700">Tempo de Uso</legend>
             <label htmlFor="tempo" className="block mt-2 font-medium">
               Há quanto tempo você conhece ou usa o site?
             </label>
@@ -168,7 +180,7 @@ export default function FormularioPage() {
 
           {/* Avaliação */}
           <fieldset className="border border-gray-300 rounded-lg p-4">
-            <legend className="text-lg font-semibold text-gray-700">Avaliação</legend>
+            <legend className="text-[1.125rem] font-semibold text-gray-700">Avaliação</legend>
             <label htmlFor="avaliacao" className="block mt-2 font-medium">
               Avaliação (1 a 5):
             </label>
@@ -182,17 +194,6 @@ export default function FormularioPage() {
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
-          </fieldset>
-
-          {/* Informações */}
-          <fieldset className="border border-gray-300 rounded-lg p-4">
-            <legend className="text-lg font-semibold text-gray-700">
-              Informações do Formulário
-            </legend>
-            <p className="text-gray-600">
-              Este é um Formulário de Feedback sobre o site NavegaHC, que tem como objetivo
-              recolher informações para o melhor desenvolvimento do site.
-            </p>
           </fieldset>
 
           <button
