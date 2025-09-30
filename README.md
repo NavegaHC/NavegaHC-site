@@ -54,9 +54,6 @@ projeto
 
 ## Tecnologia Utilizada
 
-    HTML: Utilizado para criar o código fonte dos arquivos HTML.
-    CSS: Estilização visual e responsividade.
-    JavaScript: Utilizado para adicionar funcionalidades interativas.
     Vite: Bundler rápido para desenvolvimento front-end.
     React: Biblioteca para construção da interface.
     TypeScript: Superset do JavaScript com tipagem estática.
