@@ -3,7 +3,7 @@ function Home() {
     <section className="min-h-screen flex items-center justify-center bg-gray-200 rounded-2xl px-6">
       <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10 items-center">
         <div className="space-y-6">
-          <h1 className="text-[3rem] font-extrabold text-gray-800 leading-tight">
+          <h1 className="sm:text-[2.75rem] text-[3rem] font-extrabold text-gray-800 leading-tight">
             Bem-vindo ao <span className="text-[#092d5c]">NavegaHC</span>
           </h1>
           <p className="text-[1.125rem] text-gray-700 leading-relaxed">

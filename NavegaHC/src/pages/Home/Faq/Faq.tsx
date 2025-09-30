@@ -1,4 +1,3 @@
-// src/components/FAQ.tsx
 import { useState } from "react";
 
 interface FAQItemProps {

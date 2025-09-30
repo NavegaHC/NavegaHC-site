@@ -1,4 +1,3 @@
-// src/components/Cabecalho.tsx
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -26,10 +25,10 @@ const Cabecalho: React.FC = () => {
         <img
           src="/img/logonhc.png"
           alt="Logo NavegaHC"
-          className="h-24 w-48"
+          className="h-26 w-43"
         />
 
-        {/* Menu para telas maiores */}
+        {/* menu para telas maiores */}
         <nav className="hidden lg:flex gap-8 p-4 text-[#092d5c] font-bold text-xl">
           {links.map((link: NavLink) => (
             <Link
@@ -42,7 +41,7 @@ const Cabecalho: React.FC = () => {
           ))}
         </nav>
 
-        {/* Botão hamburguer */}
+        {/* botão hamburguer */}
         <div className="lg:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -67,7 +66,7 @@ const Cabecalho: React.FC = () => {
         </div>
       </div>
 
-      {/* Menu mobile */}
+      {/* menu mobile */}
       {menuOpen && (
         <nav className="lg:hidden bg-[#d9d9d9] w-full flex flex-col items-center gap-4 py-6 text-[#092d5c] font-bold text-[1.5rem]">
           {links.map((link: NavLink) => (

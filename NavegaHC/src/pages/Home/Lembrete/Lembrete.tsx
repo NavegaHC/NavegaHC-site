@@ -114,7 +114,7 @@ export default function LembreteCompleto() {
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
           <div className="bg-white rounded-xl shadow-2xl p-8 max-w-sm w-full text-center animate-fadeIn">
             <h2 className="text-xl font-bold text-green-700 mb-4">
-              ✅ Lembrete criado com sucesso!
+              ✔️ Lembrete criado com sucesso!
             </h2>
             <button
               onClick={() => setModalOpen(false)}

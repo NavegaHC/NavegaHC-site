@@ -90,7 +90,7 @@ export default function Contato() {
 
           {success && (
             <div className="mt-4 text-center text-green-600 font-bold">
-              ✅ Entraremos em contato o mais rápido possível!
+              ✔️ Entraremos em contato o mais rápido possível!
             </div>
           )}
         </div>

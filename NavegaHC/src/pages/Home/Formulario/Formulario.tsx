@@ -21,8 +21,6 @@ export default function FormularioPage() {
         </h2>
 
         <form className="space-y-6" onSubmit={mostrarMensagem}>
-          
-          {/* Informações */}
           <fieldset className="border border-gray-300 rounded-lg p-4">
             <legend className="text-[1.125rem] font-semibold text-gray-700">
               Informações do Formulário
@@ -205,12 +203,11 @@ export default function FormularioPage() {
         </form>
       </section>
 
-      {/* Modal de sucesso */}
       {mensagem && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
             <h2 className="text-lg font-bold text-green-700 mb-4">
-              ✅ Formulário enviado com sucesso!
+              ✔️ Formulário enviado com sucesso!
             </h2>
             <button
               onClick={() => setMensagem(false)}
