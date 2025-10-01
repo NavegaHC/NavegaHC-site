@@ -89,6 +89,10 @@ projeto
 
 Endereço GITHUB: https://github.com/NavegaHC/NavegaHC-site.git
 
+## Link do Vídeo no Youtube
+
+Link: https://youtu.be/NXjoIN0eVTY?si=pexr7JNWcspRl6hU
+
 ## Formatação arquivo MARKDOWN (*.MD)
 https://support.zendesk.com/hc/pt-br/articles/4408846544922-Formata%C3%A7%C3%A3o-de-texto-com-Markdown?page=1&sort_by=created_at&sort_order=desc 
     
