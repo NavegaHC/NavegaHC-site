@@ -13,42 +13,42 @@ com deficiência.
 
 ## Estrutura de pastas e arquivos
 
-projeto
-    public/
-    src/
-        components/
-            Botao_acessibilidade/
-                arquivo tsx
-            Botao_chat/
-                arquivo tsx
-            Cabecalho/
-                arquivo tsx
-            Footer/
-                arquivo tsx
-        pages/
-            Checklist/
-                arquivo tsx
-            Contato/
-                arquivo tsx
-            Faq/
-                arquivo tsx
-            Formulario/
-                arquivo tsx
-            Home/
-                arquivo tsx
-            Integrantes/
-                arquivo tsx
-            Lembrete/
-                arquivo tsx
-        App.tsx 
-        index.css
-        main.tsx
-    vite-env.d.ts
-    eslint.config.js
-    index.html
-    package.json
-    package-lock.json
-    .gitignore
+    projeto
+        public/
+            src/
+                components/
+                    Botao_acessibilidade/
+                        arquivo tsx
+                    Botao_chat/
+                        arquivo tsx
+                    Cabecalho/
+                        arquivo tsx
+                    Footer/
+                        arquivo tsx
+                pages/
+                    Checklist/
+                        arquivo tsx
+                    Contato/
+                        arquivo tsx
+                    Faq/
+                        arquivo tsx
+                    Formulario/
+                        arquivo tsx
+                    Home/
+                        arquivo tsx
+                    Integrantes/
+                        arquivo tsx
+                    Lembrete/
+                        arquivo tsx
+                App.tsx 
+                index.css
+                main.tsx
+            vite-env.d.ts
+            eslint.config.js
+            index.html
+            package.json
+            package-lock.json
+            .gitignore
 
 
 
