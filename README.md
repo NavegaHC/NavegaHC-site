@@ -78,7 +78,11 @@ projeto
             facebook.png (ícone do facebook)
             icon_aywy.png (imagem de perfil da Agatha)
             icon_smf.png (imagem de perfil da Samantha)
-            
+            instagram.png (ícone do instagram)
+            linkedin.png (ícone do linkedin)
+            logonhc.png (logo do site NavegaHC)
+            menina_home.png (imagem da menina na página home)
+            menina_lembrete.png (imagem da menina na página lembrete)
             
 
 ## Endereço repositório do projeto do GITHUB
