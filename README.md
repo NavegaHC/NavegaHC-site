@@ -69,6 +69,15 @@ projeto
         Agatha Yie Won Yun/RM561507
         GITHUB: https://github.com/agathayun
 
+## Imagens e Ícones
+
+    public
+        img
+            acessibilidade.png (ícone de acessiblidade)
+            chatbotnhc.png (ícone do chatbot)
+            facebook.png (ícone do facebook)
+            
+
 ## Endereço repositório do projeto do GITHUB
 
 Endereço GITHUB: https://github.com/NavegaHC/NavegaHC-site.git
