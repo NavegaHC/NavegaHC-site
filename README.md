@@ -76,6 +76,8 @@ projeto
             acessibilidade.png (ícone de acessiblidade)
             chatbotnhc.png (ícone do chatbot)
             facebook.png (ícone do facebook)
+            icon_aywy.png (imagem de perfil da Agatha)
+            icon_smf.png (imagem de perfil da Samantha)
             
             
 
