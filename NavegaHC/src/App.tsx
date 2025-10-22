@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom" 
 import Cabecalho from "./componentes/Cabecalho/Cabecalho"
-import Home from "./pages/Home/Home/Home"
-import Lembrete from "./pages/Home/Lembrete/Lembrete"
-import Faq from "./pages/Home/Faq/Faq"
-import Checklist from "./pages/Home/Checklist/Checklist"
-import Integrantes from "./pages/Home/Integrantes/Integrantes"
-import Formulario from "./pages/Home/Formulario/Formulario"
-import Contato from "./pages/Home/Contato/Contato"
+import Home from "./pages/Home/Home"
+import Lembrete from "./pages/Lembrete/Lembrete"
+import Faq from "./pages/Faq/Faq"
+import Checklist from "./pages/Checklist/Checklist"
+import Integrantes from "./pages/Integrantes/Integrantes"
+import Formulario from "./pages/Formulario/Formulario"
+import Contato from "./pages/Contato/Contato"
 import Botao_chat from "./componentes/Botao_chat/Botao_chat"
 import Botao_acessibilidade from "./componentes/Botao_acessibilidade/Botao_acessibildade"
 import Footer from "./componentes/Footer/Footer"
@@ -20,7 +20,7 @@ function App() {
     <Cabecalho />
     <main className="p-4">
       <Routes>
-        <Route path="/home" element={<Home />}/>
+        <Route path="/" element={<Home />}/>
         <Route path="/lembrete" element={<Lembrete />}/>
         <Route path="/faq" element={<Faq />} />
         <Route path="/checklist" element={<Checklist />} />

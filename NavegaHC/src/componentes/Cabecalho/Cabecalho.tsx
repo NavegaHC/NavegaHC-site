@@ -10,7 +10,7 @@ const Cabecalho: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   const links: NavLink[] = [
-    { to: "/home", label: "Home" },
+    { to: "/", label: "Home" },
     { to: "/lembrete", label: "Lembrete" },
     { to: "/faq", label: "FAQ" },
     { to: "/checklist", label: "Checklist" },
