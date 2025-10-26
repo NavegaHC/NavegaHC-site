@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Cabecalho from "./componentes/Cabecalho/Cabecalho"
 import Home from "./pages/Home/Home"
 import Lembrete from "./pages/Lembrete/Lembrete"
+import LembretesSalvos from "./pages/LembretesSalvos/LembretesSalvos"
 import Faq from "./pages/Faq/Faq"
 import Checklist from "./pages/Checklist/Checklist"
 import Integrantes from "./pages/Integrantes/Integrantes"
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/lembrete" element={<Lembrete />}/>
+        <Route path="/lembretes-salvos" element={<LembretesSalvos />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/checklist" element={<Checklist />} />
         <Route path="/integrantes" element={<Integrantes />} />
