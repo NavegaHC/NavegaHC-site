@@ -1,126 +1,184 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+interface ChecklistItem {
+  id: string;
+  label: string;
+  checked: boolean;
+  categoria?: string;
+}
 
 export default function Checklist() {
-  const [checkedItems, setCheckedItems] = useState({
-    Local: false,
-    Movimentacao: false,
-    Cadeira: false,
-    CamMic: false,
-    Internet: false,
-  });
+  const [items, setItems] = useState<ChecklistItem[]>([
+    {
+      id: "local",
+      label: "Escolha um local bem iluminado e silencioso.",
+      checked: false,
+      categoria: "Ambiente"
+    },
+    {
+      id: "movimentacao",
+      label: "Certifique-se de que esteja num lugar que tenha espaço para movimentação.",
+      checked: false,
+      categoria: "Ambiente"
+    },
+    {
+      id: "cadeira",
+      label: "Tenha uma cadeira ou colchonete, caso necessário.",
+      checked: false,
+      categoria: "Equipamentos"
+    },
+    {
+      id: "cammic",
+      label: "Certifique-se se sua câmera e microfone estão funcionando.",
+      checked: false,
+      categoria: "Tecnologia"
+    },
+    {
+      id: "internet",
+      label: "Esteja num local onde saiba que sua internet estará estável.",
+      checked: false,
+      categoria: "Tecnologia"
+    },
+    {
+      id: "roupas",
+      label: "Use roupas confortáveis para os exercícios.",
+      checked: false,
+      categoria: "Pessoal"
+    },
+  ]);
 
   const [showModal, setShowModal] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = e.target;
-    const updated = { ...checkedItems, [name]: checked };
-    setCheckedItems(updated);
+  useEffect(() => {
+    const saved = localStorage.getItem('checklistFisioterapia');
+    if (saved) {
+      setItems(JSON.parse(saved));
+    }
+  }, []);
 
-    // abre modal quando todos forem true
-    const allChecked = Object.values(updated).every(Boolean);
-    if (allChecked) {
+  useEffect(() => {
+    localStorage.setItem('checklistFisioterapia', JSON.stringify(items));
+    
+    const todosMarcados = items.every(item => item.checked);
+    if (todosMarcados && items.length > 0) {
       setShowModal(true);
     }
+  }, [items]);
+
+  const handleChange = (id: string) => {
+    setItems(prev => prev.map(item =>
+      item.id === id ? { ...item, checked: !item.checked } : item
+    ));
   };
 
+  const resetChecklist = () => {
+    setItems(prev => prev.map(item => ({ ...item, checked: false })));
+    setShowModal(false);
+  };
+
+  const checkAll = () => {
+    setItems(prev => prev.map(item => ({ ...item, checked: true })));
+  };
+
+  const uncheckAll = () => {
+    setItems(prev => prev.map(item => ({ ...item, checked: false })));
+    setShowModal(false);
+  };
+
+  const itemsPorCategoria = items.reduce((acc, item) => {
+    const categoria = item.categoria || "Geral";
+    if (!acc[categoria]) {
+      acc[categoria] = [];
+    }
+    acc[categoria].push(item);
+    return acc;
+  }, {} as Record<string, ChecklistItem[]>);
+
   return (
-    <main
-      id="checklist"
-      className="flex flex-col min-h-screen items-center justify-center bg-gray-200 rounded-2xl p-6"
-    >
-      <div className="w-full max-w-xl bg-white rounded-xl shadow-lg p-6">
-        <h1 className="text-[1.5rem] font-bold text-center mb-6 text-[#092d5c]">
-          Checklist para sua Consulta de Fisioterapia - IMREA
-        </h1>
+    <main className="min-h-screen bg-gray-100 py-8 px-4">
+      <div className="max-w-2xl mx-auto">
+        
+        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 text-center">
+          <h1 className="text-2xl font-bold text-[#092d5c] mb-4">
+            Checklist para sua Consulta de Fisioterapia
+          </h1>
+          <p className="text-gray-600 mb-4">
+            Prepare-se para sua consulta online do IMREA
+          </p>
 
-        <form className="space-y-4">
-          <div className="flex items-start gap-2">
-            <input
-              type="checkbox"
-              name="Local"
-              id="Local"
-              checked={checkedItems.Local}
-              onChange={handleChange}
-              className="mt-1 h-5 w-5 text-blue-600"
-            />
-            <label htmlFor="Local">
-              Escolha um local bem iluminado e silencioso.
-            </label>
-          </div>
-
-          <div className="flex items-start gap-2">
-            <input
-              type="checkbox"
-              name="Movimentacao"
-              id="Movimentacao"
-              checked={checkedItems.Movimentacao}
-              onChange={handleChange}
-              className="mt-1 h-5 w-5 text-blue-600"
-            />
-            <label htmlFor="Movimentacao">
-              Certifique-se de que há espaço para movimentação.
-            </label>
-          </div>
-
-          <div className="flex items-start gap-2">
-            <input
-              type="checkbox"
-              name="Cadeira"
-              id="Cadeira"
-              checked={checkedItems.Cadeira}
-              onChange={handleChange}
-              className="mt-1 h-5 w-5 text-blue-600"
-            />
-            <label htmlFor="Cadeira">
-              Tenha uma cadeira ou colchonete, conforme necessário.
-            </label>
-          </div>
-
-          <div className="flex items-start gap-2">
-            <input
-              type="checkbox"
-              name="CamMic"
-              id="CamMic"
-              checked={checkedItems.CamMic}
-              onChange={handleChange}
-              className="mt-1 h-5 w-5 text-blue-600"
-            />
-            <label htmlFor="CamMic">
-              Verifique se sua câmera e microfone estão funcionando.
-            </label>
-          </div>
-
-          <div className="flex items-start gap-2">
-            <input
-              type="checkbox"
-              name="Internet"
-              id="Internet"
-              checked={checkedItems.Internet}
-              onChange={handleChange}
-              className="mt-1 h-5 w-5 text-blue-600"
-            />
-            <label htmlFor="Internet">
-              Mantenha sua internet estável.
-            </label>
-          </div>
-        </form>
-      </div>
-
-      {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
-            <h2 className="text-lg font-bold text-green-700 mb-4">
-              ✔️ Checklist concluído!
-            </h2>
+          <div className="flex gap-2 justify-center">
             <button
-              onClick={() => setShowModal(false)}
-              className="px-4 py-2 bg-[#092d5c] text-white rounded hover:bg-blue-900 transition"
+              onClick={checkAll}
+              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-sm"
             >
-              Fechar
+              Marcar Todos
+            </button>
+            <button
+              onClick={uncheckAll}
+              className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition text-sm"
+            >
+              Desmarcar Todos
+            </button>
+            <button
+              onClick={resetChecklist}
+              className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition text-sm"
+            >
+              Resetar
             </button>
           </div>
         </div>
-      )}
+
+        <div className="space-y-6">
+          {Object.entries(itemsPorCategoria).map(([categoria, categoriaItems]) => (
+            <div key={categoria} className="bg-white rounded-2xl shadow-lg p-6">
+              <h2 className="text-lg font-bold text-[#092d5c] mb-4 border-b pb-2">
+                {categoria}
+              </h2>
+              
+              <div className="space-y-3">
+                {categoriaItems.map((item) => (
+                  <div key={item.id} className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg transition">
+                    <input
+                      type="checkbox"
+                      id={item.id}
+                      checked={item.checked}
+                      onChange={() => handleChange(item.id)}
+                      className="mt-1 h-5 w-5 text-blue-600 focus:ring-blue-500"
+                    />
+                    <label 
+                      htmlFor={item.id}
+                      className={`flex-1 cursor-pointer ${item.checked ? 'text-gray-500 line-through' : 'text-gray-800'}`}
+                    >
+                      {item.label}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {showModal && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 text-center animate-fadeIn">
+              <h2 className="text-2xl font-bold text-green-700 mb-2">
+                Checklist Concluído!
+              </h2>
+              <p className="text-gray-600 mb-6">
+                Você está preparado para sua consulta de fisioterapia!
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="flex-1 bg-[#092d5c] text-white font-bold py-3 rounded-lg hover:bg-[#0a3a7a] transition"
+                >
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </main>
   );
 }

@@ -24,7 +24,6 @@ export default function LembreteCompleto() {
   const [lembreteCriado, setLembreteCriado] = useState<Lembrete | null>(null);
   const navigate = useNavigate();
 
-  // Carregar lembretes do localStorage quando o componente montar
   useEffect(() => {
     const lembretesSalvos = localStorage.getItem("lembretesConsulta");
     if (lembretesSalvos) {
@@ -32,12 +31,10 @@ export default function LembreteCompleto() {
     }
   }, []);
 
-  // Salvar lembretes no localStorage sempre que a lista mudar
   useEffect(() => {
     localStorage.setItem("lembretesConsulta", JSON.stringify(lembretes));
   }, [lembretes]);
 
-  // Verificar lembretes do dia atual
   useEffect(() => {
     const verificarLembretesHoje = () => {
       const hoje = new Date().toISOString().split('T')[0];
@@ -46,9 +43,8 @@ export default function LembreteCompleto() {
       );
 
       if (lembretesHoje.length > 0) {
-        alert(`📅 Você tem ${lembretesHoje.length} consulta(s) marcada(s) para hoje!`);
+        alert(`Você tem ${lembretesHoje.length} consulta(s) marcada(s) para hoje!`);
         
-        // Marcar como notificado
         setLembretes(prev => prev.map(lembrete => 
           lembrete.dia === hoje 
             ? { ...lembrete, notificado: true }
@@ -57,13 +53,11 @@ export default function LembreteCompleto() {
       }
     };
 
-    // Verificar uma vez ao carregar a página
     verificarLembretesHoje();
 
-    // Verificar a cada hora
     const interval = setInterval(verificarLembretesHoje, 60 * 60 * 1000);
 
-    return () => clearInterval(interval); // Cleanup
+    return () => clearInterval(interval); 
   }, [lembretes]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,7 +85,7 @@ export default function LembreteCompleto() {
   };
 
   const verMeusLembretes = () => {
-    navigate('/lembretes-salvos'); // Você pode criar esta rota depois
+    navigate('/lembretes-salvos'); 
   };
 
   const formatarData = (data: string) => {
@@ -119,11 +113,10 @@ export default function LembreteCompleto() {
             Criar Lembrete
           </h1>
 
-          {/* Estatísticas rápidas */}
           {lembretes.length > 0 && (
             <div className="mb-4 p-3 bg-blue-50 rounded-lg text-center">
               <p className="text-sm text-blue-800">
-                📋 Você tem <strong>{lembretes.length}</strong> lembrete(s) salvo(s)
+                Você tem <strong>{lembretes.length}</strong> lembrete(s) salvo(s)
               </p>
             </div>
           )}
@@ -200,7 +193,6 @@ export default function LembreteCompleto() {
             </button>
           </form>
 
-          {/* Botão para ver lembretes salvos */}
           {lembretes.length > 0 && (
             <button
               onClick={verMeusLembretes}
@@ -212,7 +204,6 @@ export default function LembreteCompleto() {
         </div>
       </div>
 
-      {/* Modal de confirmação melhorado */}
       {modalOpen && lembreteCriado && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
           <div className="bg-white rounded-xl shadow-2xl p-8 max-w-sm w-full text-center animate-fadeIn">
