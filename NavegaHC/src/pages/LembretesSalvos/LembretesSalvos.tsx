@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 
 interface Lembrete {
   id: string;
@@ -12,9 +12,18 @@ interface Lembrete {
 }
 
 export default function LembretesSalvos() {
+  const { filtro } = useParams();
   const [lembretes, setLembretes] = useState<Lembrete[]>([]);
-  const [filtro, setFiltro] = useState<'todos' | 'hoje' | 'futuros'>('todos');
+  const [filtroAtivo, setFiltroAtivo] = useState<'todos' | 'hoje' | 'futuros'>('todos');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (filtro && ['todos', 'hoje', 'futuros'].includes(filtro)) {
+      setFiltroAtivo(filtro as any);
+    } else {
+      setFiltroAtivo('todos');
+    }
+  }, [filtro]);
 
   useEffect(() => {
     const lembretesSalvos = localStorage.getItem("lembretesConsulta");
@@ -38,12 +47,16 @@ export default function LembretesSalvos() {
     }
   };
 
+  const navegarComFiltro =  (novoFiltro: string) => {
+    navigate(`/lembretessalvos/${novoFiltro}`);
+  }
+
   const lembretesFiltrados = lembretes.filter(lembrete => {
     const hoje = new Date().toISOString().split('T')[0];
     const dataLembrete = lembrete.dia;
 
-    if (filtro === 'hoje') return dataLembrete === hoje;
-    if (filtro === 'futuros') return dataLembrete >= hoje;
+    if (filtroAtivo === 'hoje') return dataLembrete === hoje;
+    if (filtroAtivo === 'futuros') return dataLembrete >= hoje;
     return true;
   });
 
@@ -125,9 +138,9 @@ export default function LembretesSalvos() {
 
           <div className="flex gap-2 mt-4 flex-wrap">
             <button
-              onClick={() => setFiltro('todos')}
+              onClick={() => navegarComFiltro('todos')}
               className={`px-4 py-2 rounded-lg font-medium ${
-                filtro === 'todos' 
+                filtroAtivo === 'todos' 
                   ? 'bg-[#092d5c] text-white' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
@@ -135,9 +148,9 @@ export default function LembretesSalvos() {
               Todos ({lembretes.length})
             </button>
             <button
-              onClick={() => setFiltro('hoje')}
+              onClick={() => navegarComFiltro('hoje')}
               className={`px-4 py-2 rounded-lg font-medium ${
-                filtro === 'hoje' 
+                filtroAtivo === 'hoje' 
                   ? 'bg-green-600 text-white' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
@@ -145,7 +158,7 @@ export default function LembretesSalvos() {
               Hoje ({lembretes.filter(l => eHoje(l.dia)).length})
             </button>
             <button
-              onClick={() => setFiltro('futuros')}
+              onClick={() => navegarComFiltro('futuros')}
               className={`px-4 py-2 rounded-lg font-medium ${
                 filtro === 'futuros' 
                   ? 'bg-blue-600 text-white' 
@@ -214,6 +227,12 @@ export default function LembretesSalvos() {
                   </div>
 
                   <div className="flex gap-2">
+                    <Link 
+                    to={`/lembrete/editar/${lembrete.id}`}
+                    className="bg-blue-100 text-blue-700 font-bold py-2 px-4 rounded-lg hover:bg-blue-200 transition"
+                    title="Editar lembrete">
+                      Editar
+                    </Link>
                     <button
                       onClick={() => removerLembrete(lembrete.id)}
                       className="bg-red-100 text-red-700 font-bold py-2 px-4 rounded-lg hover:bg-red-200 transition"
