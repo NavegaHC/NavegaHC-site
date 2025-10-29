@@ -71,11 +71,6 @@ export default function Checklist() {
     ));
   };
 
-  const resetChecklist = () => {
-    setItems(prev => prev.map(item => ({ ...item, checked: false })));
-    setShowModal(false);
-  };
-
   const checkAll = () => {
     setItems(prev => prev.map(item => ({ ...item, checked: true })));
   };
@@ -95,7 +90,7 @@ export default function Checklist() {
   }, {} as Record<string, ChecklistItem[]>);
 
   return (
-    <main className="min-h-screen bg-gray-100 py-8 px-4">
+    <main className="min-h-screen bg-gray-200 rounded-2xl  py-8 px-4">
       <div className="max-w-2xl mx-auto">
         
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 text-center">
@@ -115,15 +110,9 @@ export default function Checklist() {
             </button>
             <button
               onClick={uncheckAll}
-              className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition text-sm"
+              className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition text-sm"
             >
               Desmarcar Todos
-            </button>
-            <button
-              onClick={resetChecklist}
-              className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition text-sm"
-            >
-              Resetar
             </button>
           </div>
         </div>
@@ -172,7 +161,7 @@ export default function Checklist() {
                   onClick={() => setShowModal(false)}
                   className="flex-1 bg-[#092d5c] text-white font-bold py-3 rounded-lg hover:bg-[#0a3a7a] transition"
                 >
-                  Continuar
+                  Fechar
                 </button>
               </div>
             </div>

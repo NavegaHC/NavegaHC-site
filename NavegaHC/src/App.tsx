@@ -22,7 +22,7 @@ function App() {
     <main className="p-4">
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/lembrete" element={<Lembrete />}/>
+        <Route path="/lembrete" element={<Lembrete />} />
         <Route path="/lembretes-salvos" element={<LembretesSalvos />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/checklist" element={<Checklist />} />
