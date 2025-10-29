@@ -32,7 +32,7 @@ const Cabecalho: React.FC = () => {
 
   return (
     <header className="bg-[#cecaca] shadow-md">
-      <div className="w-full mx-auto flex justify-between items-center p-4">
+      <div className="w-full mx-auto flex justify-between items-center p-3">
         <img
           src="/img/logonhc.png"
           alt="Logo NavegaHC"

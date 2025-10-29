@@ -1,5 +1,6 @@
+// components/LembreteCompleto.jsx
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom"; // ✅ Adicione useParams
 
 interface Lembrete {
   id: string;
@@ -11,7 +12,8 @@ interface Lembrete {
   notificado: boolean;
 }
 
-export default function Lembrete() {
+export default function LembreteCompleto() {
+  // ✅ useParams: Pega o ID da URL se estiver editando
   const { id } = useParams();
   const [form, setForm] = useState({
     nome: "",
@@ -23,9 +25,10 @@ export default function Lembrete() {
   const [modalOpen, setModalOpen] = useState(false);
   const [lembretes, setLembretes] = useState<Lembrete[]>([]);
   const [lembreteCriado, setLembreteCriado] = useState<Lembrete | null>(null);
-  const [modoEdicao, setModoEdicao] = useState(false);
+  const [modoEdicao, setModoEdicao] = useState(false); // ✅ Novo estado para modo edição
   const navigate = useNavigate();
 
+  // ✅ Efeito para carregar dados do localStorage
   useEffect(() => {
     const lembretesSalvos = localStorage.getItem("lembretesConsulta");
     if (lembretesSalvos) {
@@ -33,43 +36,49 @@ export default function Lembrete() {
     }
   }, []);
 
+  // ✅ Efeito para SALVAR no localStorage quando lembretes mudam
   useEffect(() => {
     localStorage.setItem("lembretesConsulta", JSON.stringify(lembretes));
   }, [lembretes]);
 
+  // ✅ Efeito para CARREGAR LEMBRETE se estiver EDITANDO (useParams em ação!)
   useEffect(() => {
-    if(id){
+    if (id) {
       const lembreteParaEditar = lembretes.find(lembrete => lembrete.id === id);
       
       if (lembreteParaEditar) {
+        // Preenche o formulário com os dados do lembrete
         setForm({
           nome: lembreteParaEditar.nome,
           telefone: lembreteParaEditar.telefone,
           dia: lembreteParaEditar.dia,
           hora: lembreteParaEditar.hora,
         });
-        setModoEdicao(true);
+        setModoEdicao(true); // Ativa o modo edição
       } else {
-        navigate('/lembretessalvos/todos');
+        // Se não encontrar o lembrete, volta para a lista
+        navigate("/lembretes-salvos/todos");
       }
     }
-    }, [id, lembretes, navigate]);
+  }, [id, lembretes, navigate]);
 
-    useEffect(()=> {
-      const verificarLembretesHoje = () => {
-        const hoje = new Date().toISOString().split('T')[0];
-        const lembretesHoje = lembretes.filter(
-          lembrete => lembrete.dia === hoje && !lembrete.notificado
-        );
+  // ✅ Efeito para NOTIFICAÇÕES (mantido do seu código original)
+  useEffect(() => {
+    const verificarLembretesHoje = () => {
+      const hoje = new Date().toISOString().split('T')[0];
+      const lembretesHoje = lembretes.filter(
+        lembrete => lembrete.dia === hoje && !lembrete.notificado
+      );
+
+      if (lembretesHoje.length > 0) {
+        alert(`Você tem ${lembretesHoje.length} consulta(s) marcada(s) para hoje!`);
         
-        if (lembretesHoje.length > 0) {
-          alert(`Você tem ${lembretesHoje.length} consulta(s) marcada(s) para hoje!`);
-          setLembretes(prev => prev.map(lembrete => 
-            lembrete.dia === hoje 
+        setLembretes(prev => prev.map(lembrete => 
+          lembrete.dia === hoje 
             ? { ...lembrete, notificado: true }
             : lembrete
-          ));
-        }  
+        ));
+      }
     };
 
     verificarLembretesHoje();
@@ -78,91 +87,105 @@ export default function Lembrete() {
     return () => clearInterval(interval); 
   }, [lembretes]);
 
-
+  // ✅ Função para manipular mudanças nos inputs
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  // ✅ Função para SUBMIT (criação E edição)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (modoEdicao && id) {
-      const novosLembretes = lembretes.map(lembrete =>
-        lembrete.id === id
-          ? {
-              ...lembrete,  
+      // 🔄 MODO EDIÇÃO - Atualiza lembrete existente
+      const novosLembretes = lembretes.map(lembrete => 
+        lembrete.id === id 
+          ? { 
+              ...lembrete, 
               nome: form.nome,
               telefone: form.telefone,
               dia: form.dia,
-              hora: form.hora,
+              hora: form.hora
             }
-            : lembrete
-          );
-          setLembretes(novosLembretes);
-          setLembreteCriado({...form, id } as Lembrete);
-          setModalOpen(true);
-        } else {
-          const novoLembrete: Lembrete = {
-            id: Date.now().toString(),
-            nome: form.nome,
-            telefone: form.telefone,
-            dia: form.dia,
-            hora: form.hora,
-            dataCriacao: new Date().toLocaleDateString('pt-BR'),
-            notificado: false
-        };
-        setLembretes(prev => [novoLembrete, ...prev]);
-        setLembreteCriado(novoLembrete);
-        setModalOpen(true);
-      }
-      setForm({ nome: "", telefone: "", dia: "", hora: "" });
-    };
+          : lembrete
+      );
+      
+      setLembretes(novosLembretes);
+      setLembreteCriado({ ...form, id } as Lembrete);
+      setModalOpen(true);
+      
+    } else {
+      // ➕ MODO CRIAÇÃO - Cria novo lembrete
+      const novoLembrete: Lembrete = {
+        id: Date.now().toString(),
+        nome: form.nome,
+        telefone: form.telefone,
+        dia: form.dia,
+        hora: form.hora,
+        dataCriacao: new Date().toLocaleDateString('pt-BR'),
+        notificado: false
+      };
 
-    const cancelarEdicao = () => {
-      setModoEdicao(false);
-      setForm({ nome: "", telefone: "", dia: "", hora: "" });
-      navigate("/lembrete");
-    };
+      setLembretes(prev => [novoLembrete, ...prev]);
+      setLembreteCriado(novoLembrete);
+      setModalOpen(true);
+    }
     
-    const verMeusLembretes = () => {
-      navigate('/lembretessalvos'); 
-    };
-    
-    const formatarData = (data: string) => {
-      return new Date(data).toLocaleDateString('pt-BR');
-    };
+    // Limpa o formulário após submit
+    setForm({ nome: "", telefone: "", dia: "", hora: "" });
+  };
 
-    const formatarHora = (hora: string) => {
-      return hora.substring(0, 5);
-    };
+  // ✅ Função para CANCELAR edição
+  const cancelarEdicao = () => {
+    setModoEdicao(false);
+    setForm({ nome: "", telefone: "", dia: "", hora: "" });
+    navigate("/lembrete"); // Volta para a rota sem parâmetros
+  };
 
-    const titulo = modoEdicao ? "Editar Lembrete" : "Criar Lembrete";
-    const textoBotao = modoEdicao ? "Atualizar Lembrete" : "Salvar Lembrete";
-    const textoModal = modoEdicao ? "Lembrete atualizado com sucesso!" : "Lembrete criado com sucesso!";
-    
-    return (
-    
-      <main className="min-h-screen flex flex-col items-center justify-center px-6 py-12 bg-gray-200 rounded-2xl">
+  // ✅ Função para ver lembretes
+  const verMeusLembretes = () => {
+    navigate('/lembretes-salvos/todos'); 
+  };
+
+  // ✅ Funções de formatação
+  const formatarData = (data: string) => {
+    return new Date(data).toLocaleDateString('pt-BR');
+  };
+
+  const formatarHora = (hora: string) => {
+    return hora.substring(0, 5);
+  };
+
+  // ✅ Textos dinâmicos baseados no modo
+  const titulo = modoEdicao ? "Editar Lembrete" : "Criar Lembrete";
+  const textoBotao = modoEdicao ? "Atualizar Lembrete" : "Salvar Lembrete";
+  const textoModal = modoEdicao ? "Lembrete atualizado com sucesso!" : "Lembrete criado com sucesso!";
+
+  return (
+    <main className="min-h-screen flex flex-col items-center justify-center px-6 py-12 bg-gray-200 rounded-2xl">
       <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        
         <div className="flex justify-center">
           <img
-          src="/img/menina_lembrete.png"
-          alt="Ilustração de menina usando celular"
-          className="w-64 md:w-80 lg:w-96 drop-shadow-lg"
+            src="/img/menina_lembrete.png"
+            alt="Ilustração de menina usando celular"
+            className="w-64 md:w-80 lg:w-96 drop-shadow-lg"
           />
         </div>
+
         <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md mx-auto">
           <h1 className="text-[1.875rem] font-bold text-center mb-6 text-[#092d5c]">
             {titulo}
           </h1>
-          {lembretes.length > 0 && !modoEdicao &&(
+
+          {lembretes.length > 0 && !modoEdicao && (
             <div className="mb-4 p-3 bg-blue-50 rounded-lg text-center">
               <p className="text-sm text-blue-800">
                 Você tem <strong>{lembretes.length}</strong> lembrete(s) salvo(s)
               </p>
             </div>
-            )}
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
@@ -177,6 +200,7 @@ export default function Lembrete() {
                 onChange={handleChange}
                 required
                 className="mt-1 w-full border rounded-lg px-4 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                placeholder="Seu nome completo"
               />
             </div>
 
@@ -192,6 +216,7 @@ export default function Lembrete() {
                 onChange={handleChange}
                 required
                 className="mt-1 w-full border rounded-lg px-4 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                placeholder="(11) 99999-9999"
               />
             </div>
 
@@ -234,7 +259,7 @@ export default function Lembrete() {
             </button>
           </form>
 
-          {lembretes.length > 0 && !modoEdicao &&(
+          {lembretes.length > 0 && !modoEdicao && (
             <button
               onClick={verMeusLembretes}
               className="w-full mt-4 bg-green-600 text-white font-bold py-2 rounded-lg hover:bg-green-700 transition shadow-md"
@@ -247,9 +272,9 @@ export default function Lembrete() {
             <button
               onClick={cancelarEdicao}
               className="w-full mt-4 bg-gray-500 text-white font-bold py-2 rounded-lg hover:bg-gray-600 transition shadow-md"
-              >
-                Cancelar Edição
-              </button>
+            >
+              Cancelar Edição
+            </button>
           )}
         </div>
       </div>
@@ -271,10 +296,11 @@ export default function Lembrete() {
 
             <div className="flex gap-3">
               <button
-                onClick={() => {setModalOpen(false);
+                onClick={() => {
+                  setModalOpen(false);
                   if (modoEdicao) {
                     setModoEdicao(false);
-                    navigate('/lembretessalvos/todos');
+                    navigate('/lembretes-salvos/todos');
                   }
                 }}
                 className="flex-1 bg-[#092d5c] text-white font-bold px-4 py-2 rounded-lg hover:bg-blue-900 transition"

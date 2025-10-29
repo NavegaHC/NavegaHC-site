@@ -26,6 +26,8 @@ function App() {
         <Route path="/lembrete/editar/:id" element={<Lembrete />}/>
         <Route path="/lembretessalvos" element={<LembretesSalvos />} />
         <Route path="/lembretessalvos/:filtro" element={<LembretesSalvos />} />
+        <Route path="/lembrete" element={<Lembrete />} />
+        <Route path="/lembretes-salvos" element={<LembretesSalvos />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/checklist" element={<Checklist />} />
         <Route path="/integrantes" element={<Integrantes />} />

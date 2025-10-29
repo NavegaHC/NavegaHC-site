@@ -1,5 +1,6 @@
+// components/LembretesSalvos.jsx
 import { useState, useEffect } from "react";
-import { useNavigate, Link, useParams } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom"; // ✅ Adicione useParams
 
 interface Lembrete {
   id: string;
@@ -12,11 +13,13 @@ interface Lembrete {
 }
 
 export default function LembretesSalvos() {
+  // ✅ useParams: Pega o filtro da URL
   const { filtro } = useParams();
   const [lembretes, setLembretes] = useState<Lembrete[]>([]);
   const [filtroAtivo, setFiltroAtivo] = useState<'todos' | 'hoje' | 'futuros'>('todos');
   const navigate = useNavigate();
 
+  // ✅ Efeito para SINCRONIZAR FILTRO da URL
   useEffect(() => {
     if (filtro && ['todos', 'hoje', 'futuros'].includes(filtro)) {
       setFiltroAtivo(filtro as any);
@@ -25,6 +28,7 @@ export default function LembretesSalvos() {
     }
   }, [filtro]);
 
+  // ✅ Efeito para CARREGAR LEMBRETES do localStorage
   useEffect(() => {
     const lembretesSalvos = localStorage.getItem("lembretesConsulta");
     if (lembretesSalvos) {
@@ -32,6 +36,7 @@ export default function LembretesSalvos() {
     }
   }, []);
 
+  // ✅ Função para REMOVER um lembrete
   const removerLembrete = (id: string) => {
     if (window.confirm("Tem certeza que deseja excluir este lembrete?")) {
       const novosLembretes = lembretes.filter(lembrete => lembrete.id !== id);
@@ -40,6 +45,7 @@ export default function LembretesSalvos() {
     }
   };
 
+  // ✅ Função para LIMPAR TODOS os lembretes
   const limparTodosLembretes = () => {
     if (window.confirm("Tem certeza que deseja excluir TODOS os lembretes?")) {
       setLembretes([]);
@@ -47,19 +53,22 @@ export default function LembretesSalvos() {
     }
   };
 
-  const navegarComFiltro =  (novoFiltro: string) => {
-    navigate(`/lembretessalvos/${novoFiltro}`);
-  }
+  // ✅ Função para NAVEGAR com filtro na URL
+  const navegarComFiltro = (novoFiltro: string) => {
+    navigate(`/lembretes-salvos/${novoFiltro}`);
+  };
 
+  // ✅ Função para APLICAR FILTROS nos lembretes
   const lembretesFiltrados = lembretes.filter(lembrete => {
     const hoje = new Date().toISOString().split('T')[0];
     const dataLembrete = lembrete.dia;
 
     if (filtroAtivo === 'hoje') return dataLembrete === hoje;
     if (filtroAtivo === 'futuros') return dataLembrete >= hoje;
-    return true;
+    return true; // 'todos'
   });
 
+  // ✅ Funções de formatação
   const formatarData = (data: string) => {
     return new Date(data).toLocaleDateString('pt-BR');
   };
@@ -68,6 +77,7 @@ export default function LembretesSalvos() {
     return hora.substring(0, 5);
   };
 
+  // ✅ Funções auxiliares para verificar datas
   const eHoje = (data: string) => {
     const hoje = new Date().toISOString().split('T')[0];
     return data === hoje;
@@ -78,6 +88,7 @@ export default function LembretesSalvos() {
     return data > hoje;
   };
 
+  // ✅ Renderização quando NÃO HÁ LEMBRETES
   if (lembretes.length === 0) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12 bg-gray-200">
@@ -105,10 +116,11 @@ export default function LembretesSalvos() {
     );
   }
 
+  // ✅ Renderização PRINCIPAL com lembretes
   return (
     <div className="min-h-screen bg-gray-200 py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Cabeçalho */}
+        {/* CABEÇALHO */}
         <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
@@ -136,6 +148,7 @@ export default function LembretesSalvos() {
             </div>
           </div>
 
+          {/* FILTROS COM useParams */}
           <div className="flex gap-2 mt-4 flex-wrap">
             <button
               onClick={() => navegarComFiltro('todos')}
@@ -160,7 +173,7 @@ export default function LembretesSalvos() {
             <button
               onClick={() => navegarComFiltro('futuros')}
               className={`px-4 py-2 rounded-lg font-medium ${
-                filtro === 'futuros' 
+                filtroAtivo === 'futuros' 
                   ? 'bg-blue-600 text-white' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
@@ -170,6 +183,7 @@ export default function LembretesSalvos() {
           </div>
         </div>
 
+        {/* LISTA DE LEMBRETES */}
         <div className="space-y-4">
           {lembretesFiltrados.length === 0 ? (
             <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
@@ -227,17 +241,20 @@ export default function LembretesSalvos() {
                   </div>
 
                   <div className="flex gap-2">
-                    <Link 
-                    to={`/lembrete/editar/${lembrete.id}`}
-                    className="bg-blue-100 text-blue-700 font-bold py-2 px-4 rounded-lg hover:bg-blue-200 transition"
-                    title="Editar lembrete">
-                      Editar
+                    {/* ✅ BOTÃO EDITAR - usa useParams na URL */}
+                    <Link
+                      to={`/lembrete/editar/${lembrete.id}`}
+                      className="bg-yellow-100 text-yellow-700 font-bold py-2 px-3 rounded-lg hover:bg-yellow-200 transition"
+                      title="Editar lembrete"
+                    >
+                      ✏️
                     </Link>
                     <button
                       onClick={() => removerLembrete(lembrete.id)}
-                      className="bg-red-100 text-red-700 font-bold py-2 px-4 rounded-lg hover:bg-red-200 transition"
+                      className="bg-red-100 text-red-700 font-bold py-2 px-3 rounded-lg hover:bg-red-200 transition"
                       title="Excluir lembrete"
-                    > x
+                    >
+                      🗑️
                     </button>
                   </div>
                 </div>

@@ -7,7 +7,6 @@ export default function FormularioPage() {
     e.preventDefault();
     setMensagem(true);
 
-    // fecha sozinho depois de 4s
     setTimeout(() => {
       setMensagem(false);
     }, 4000);
