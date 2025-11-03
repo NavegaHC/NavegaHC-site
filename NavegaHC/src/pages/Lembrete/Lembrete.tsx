@@ -1,6 +1,5 @@
-// components/LembreteCompleto.jsx
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom"; // ✅ Adicione useParams
+import { useNavigate, useParams } from "react-router-dom";
 
 interface Lembrete {
   id: string;
@@ -13,7 +12,6 @@ interface Lembrete {
 }
 
 export default function LembreteCompleto() {
-  // ✅ useParams: Pega o ID da URL se estiver editando
   const { id } = useParams();
   const [form, setForm] = useState({
     nome: "",
@@ -25,44 +23,49 @@ export default function LembreteCompleto() {
   const [modalOpen, setModalOpen] = useState(false);
   const [lembretes, setLembretes] = useState<Lembrete[]>([]);
   const [lembreteCriado, setLembreteCriado] = useState<Lembrete | null>(null);
-  const [modoEdicao, setModoEdicao] = useState(false); // ✅ Novo estado para modo edição
+  const [modoEdicao, setModoEdicao] = useState(false); 
   const navigate = useNavigate();
 
-  // ✅ Efeito para carregar dados do localStorage
   useEffect(() => {
     const lembretesSalvos = localStorage.getItem("lembretesConsulta");
+    console.log("Lembretes carregados:", lembretesSalvos); 
     if (lembretesSalvos) {
-      setLembretes(JSON.parse(lembretesSalvos));
+      try {
+        const parsedLembretes = JSON.parse(lembretesSalvos);
+        setLembretes(parsedLembretes);
+      } catch (error) {
+        console.error("Erro ao carregar lembretes:", error);
+        setLembretes([]);
+      }
     }
   }, []);
 
-  // ✅ Efeito para SALVAR no localStorage quando lembretes mudam
   useEffect(() => {
-    localStorage.setItem("lembretesConsulta", JSON.stringify(lembretes));
+    if (lembretes.length > 0 || localStorage.getItem("lembretesConsulta")) {
+      console.log("Salvando lembretes:", lembretes);
+      localStorage.setItem("lembretesConsulta", JSON.stringify(lembretes));
+    }
   }, [lembretes]);
 
-  // ✅ Efeito para CARREGAR LEMBRETE se estiver EDITANDO (useParams em ação!)
   useEffect(() => {
-    if (id) {
+    if (id && lembretes.length > 0) {
       const lembreteParaEditar = lembretes.find(lembrete => lembrete.id === id);
       
       if (lembreteParaEditar) {
-        // Preenche o formulário com os dados do lembrete
         setForm({
           nome: lembreteParaEditar.nome,
           telefone: lembreteParaEditar.telefone,
           dia: lembreteParaEditar.dia,
           hora: lembreteParaEditar.hora,
         });
-        setModoEdicao(true); // Ativa o modo edição
+        setModoEdicao(true);
       } else {
-        // Se não encontrar o lembrete, volta para a lista
-        navigate("/lembretes-salvos/todos");
+        console.warn("Lembrete não encontrado para edição");
+        navigate("/lembretessalvos/todos");
       }
     }
   }, [id, lembretes, navigate]);
 
-  // ✅ Efeito para NOTIFICAÇÕES (mantido do seu código original)
   useEffect(() => {
     const verificarLembretesHoje = () => {
       const hoje = new Date().toISOString().split('T')[0];
@@ -73,32 +76,36 @@ export default function LembreteCompleto() {
       if (lembretesHoje.length > 0) {
         alert(`Você tem ${lembretesHoje.length} consulta(s) marcada(s) para hoje!`);
         
-        setLembretes(prev => prev.map(lembrete => 
-          lembrete.dia === hoje 
+        const lembretesAtualizados = lembretes.map(lembrete => 
+          lembrete.dia === hoje && !lembrete.notificado
             ? { ...lembrete, notificado: true }
             : lembrete
-        ));
+        );
+        setLembretes(lembretesAtualizados);
       }
     };
 
-    verificarLembretesHoje();
-    const interval = setInterval(verificarLembretesHoje, 60 * 60 * 1000);
-
-    return () => clearInterval(interval); 
+    if (lembretes.length > 0) {
+      verificarLembretesHoje();
+      const interval = setInterval(verificarLembretesHoje, 60 * 60 * 1000);
+      return () => clearInterval(interval);
+    }
   }, [lembretes]);
 
-  // ✅ Função para manipular mudanças nos inputs
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // ✅ Função para SUBMIT (criação E edição)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!form.nome.trim() || !form.telefone.trim() || !form.dia || !form.hora) {
+      alert("Por favor, preencha todos os campos!");
+      return;
+    }
+
     if (modoEdicao && id) {
-      // 🔄 MODO EDIÇÃO - Atualiza lembrete existente
       const novosLembretes = lembretes.map(lembrete => 
         lembrete.id === id 
           ? { 
@@ -112,11 +119,15 @@ export default function LembreteCompleto() {
       );
       
       setLembretes(novosLembretes);
-      setLembreteCriado({ ...form, id } as Lembrete);
+      setLembreteCriado({ 
+        ...form, 
+        id,
+        dataCriacao: lembretes.find(l => l.id === id)?.dataCriacao || new Date().toLocaleDateString('pt-BR'),
+        notificado: false 
+      } as Lembrete);
       setModalOpen(true);
       
     } else {
-      // ➕ MODO CRIAÇÃO - Cria novo lembrete
       const novoLembrete: Lembrete = {
         id: Date.now().toString(),
         nome: form.nome,
@@ -127,37 +138,33 @@ export default function LembreteCompleto() {
         notificado: false
       };
 
-      setLembretes(prev => [novoLembrete, ...prev]);
+      const novosLembretes = [novoLembrete, ...lembretes];
+      setLembretes(novosLembretes);
       setLembreteCriado(novoLembrete);
       setModalOpen(true);
     }
     
-    // Limpa o formulário após submit
     setForm({ nome: "", telefone: "", dia: "", hora: "" });
   };
 
-  // ✅ Função para CANCELAR edição
   const cancelarEdicao = () => {
     setModoEdicao(false);
     setForm({ nome: "", telefone: "", dia: "", hora: "" });
-    navigate("/lembrete"); // Volta para a rota sem parâmetros
+    navigate("/lembrete"); 
   };
 
-  // ✅ Função para ver lembretes
   const verMeusLembretes = () => {
-    navigate('/lembretes-salvos/todos'); 
+    navigate('/lembretessalvos/todos'); 
   };
 
-  // ✅ Funções de formatação
   const formatarData = (data: string) => {
-    return new Date(data).toLocaleDateString('pt-BR');
+    return new Date(data + 'T00:00:00').toLocaleDateString('pt-BR');
   };
 
   const formatarHora = (hora: string) => {
     return hora.substring(0, 5);
   };
 
-  // ✅ Textos dinâmicos baseados no modo
   const titulo = modoEdicao ? "Editar Lembrete" : "Criar Lembrete";
   const textoBotao = modoEdicao ? "Atualizar Lembrete" : "Salvar Lembrete";
   const textoModal = modoEdicao ? "Lembrete atualizado com sucesso!" : "Lembrete criado com sucesso!";
@@ -184,6 +191,12 @@ export default function LembreteCompleto() {
               <p className="text-sm text-blue-800">
                 Você tem <strong>{lembretes.length}</strong> lembrete(s) salvo(s)
               </p>
+              <button
+                onClick={verMeusLembretes}
+                className="mt-2 text-sm text-blue-600 hover:text-blue-800 underline"
+              >
+                Ver todos os lembretes
+              </button>
             </div>
           )}
 
@@ -200,7 +213,6 @@ export default function LembreteCompleto() {
                 onChange={handleChange}
                 required
                 className="mt-1 w-full border rounded-lg px-4 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
-                placeholder="Seu nome completo"
               />
             </div>
 
@@ -216,7 +228,6 @@ export default function LembreteCompleto() {
                 onChange={handleChange}
                 required
                 className="mt-1 w-full border rounded-lg px-4 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none"
-                placeholder="(11) 99999-9999"
               />
             </div>
 
@@ -300,7 +311,7 @@ export default function LembreteCompleto() {
                   setModalOpen(false);
                   if (modoEdicao) {
                     setModoEdicao(false);
-                    navigate('/lembretes-salvos/todos');
+                    navigate('/lembretessalvos/todos');
                   }
                 }}
                 className="flex-1 bg-[#092d5c] text-white font-bold px-4 py-2 rounded-lg hover:bg-blue-900 transition"

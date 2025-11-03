@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const ControleFonte: React.FC = () => {
+const Acessibilidade: React.FC = () => {
   const [fontSize, setFontSize] = useState<number>(16);
   const [mostrar, setMostrar] = useState<boolean>(false);
 
@@ -12,7 +12,6 @@ const ControleFonte: React.FC = () => {
     if (fontSize > 10) setFontSize((prev) => prev - 2);
   };
 
-  // aplica o tamanho da fonte em TODO o body
   useEffect(() => {
     document.documentElement.style.fontSize = `${fontSize}px`;
   }, [fontSize]);
@@ -31,13 +30,13 @@ const ControleFonte: React.FC = () => {
         <div className="m-10 flex gap-2 bg-white p-1 rounded-lg shadow-md">
           <button
             onClick={aumentarFonte}
-            className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="px-3 py-1 bg-blue-700 text-white rounded hover:bg-blue-800"
           >
             A+
           </button>
           <button
             onClick={diminuirFonte}
-            className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+            className="px-3 py-1 bg-red-700 text-white rounded hover:bg-red-900"
           >
             A-
           </button>
@@ -47,4 +46,4 @@ const ControleFonte: React.FC = () => {
   );
 };
 
-export default ControleFonte;
+export default Acessibilidade;
