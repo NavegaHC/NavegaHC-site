@@ -1,6 +1,81 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export default function FormularioPage() {
+type Feedback={
+  id?: number;
+  nome: string;
+  idade: number;
+  tipoDispositivo: string;
+  sistemaDispositivo: string;
+  experiencia: string;
+  sugestao: string;
+  tempo: string;
+  frequencia: string;
+  pergunta: string;
+  tipoDificuldade: string;
+  descricaoDificuldade: string;
+  avaliar: number;
+}
+
+const FormularioPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const feedbackEdicao = location.state as Feedback | undefined;
+  const [ feedback, setFeedback ] = useState<Feedback>({
+    id: feedbackEdicao?.id ?? undefined,
+    nome: feedbackEdicao?.nome ?? "",
+    idade: feedbackEdicao?.idade ?? 0,
+    tipoDispositivo: feedbackEdicao?.tipoDispositivo ?? "",
+    sistemaDispositivo: feedbackEdicao?.sistemaDispositivo ?? "",
+    experiencia: feedbackEdicao?.experiencia ?? "",
+    sugestao: feedbackEdicao?.sugestao ?? "",
+    tempo: feedbackEdicao?.tempo ?? "",
+    frequencia: feedbackEdicao?.frequencia ?? "",
+    pergunta: feedbackEdicao?.pergunta ?? "",
+    tipoDificuldade: feedbackEdicao?.tipoDificuldade ?? "",
+    descricaoDificuldade: feedbackEdicao?.descricaoDificuldade ?? "",
+    avaliar: feedbackEdicao?.avaliar ?? 0,
+  });
+
+  useEffect(() => {
+    if(feedbackEdicao) {
+      setFeedback(feedbackEdicao);
+    }
+  }, [feedbackEdicao]);
+
+  const API_URL = "http://localhost:8080/feedback";
+
+  const url = feedback.id ? `${API_URL}/${feedback.id}` : API_URL;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFeedback({
+      ...feedback,
+      [id]: id === "id" || id === "avaliar" ? Number(value) : value,
+    });
+  };
+
+  const handlePost = async () => {
+    const method = feedback.id ? "PUT" : "POST";
+    try{
+      const response = await fetch(url, {
+        method: method,
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify(feedback),
+      });
+      if(response.ok){
+        alert(feedback.id ? `Feedback de ${feedback.nome} atualizado com sucesso!` : `Feedback de ${feedback.nome} cadastrado no sistema com sucesso!`);
+        navigate("/");
+      } else{
+        const erro = await response.text();
+        alert(feedback.id ? "Erro ao atualizar feedback: " + erro : "Erro ao cadastrar feedback: " + erro);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Erro de conexão com o servidor!");
+    } 
+  }
+
   const [mensagem, setMensagem] = useState(false);
 
   const mostrarMensagem = (e: React.FormEvent) => {
@@ -40,6 +115,8 @@ export default function FormularioPage() {
               type="text"
               id="nome"
               name="nome"
+              onChange={handleChange}
+              value={feedback.nome} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -51,6 +128,8 @@ export default function FormularioPage() {
               type="number"
               id="idade"
               name="idade"
+              onChange={handleChange}
+              value={feedback.idade} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -64,8 +143,10 @@ export default function FormularioPage() {
             </label>
             <input
               type="text"
-              id="dispositivo"
+              id="tipoDispositivo"
               name="dispositivo"
+              onChange={handleChange}
+              value={feedback.tipoDispositivo} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -75,8 +156,10 @@ export default function FormularioPage() {
             </label>
             <input
               type="text"
-              id="sistema"
+              id="sistemaDispositivo"
               name="sistema"
+              onChange={handleChange}
+              value={feedback.sistemaDispositivo} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -92,6 +175,8 @@ export default function FormularioPage() {
               type="text"
               id="experiencia"
               name="experiencia"
+              onChange={handleChange}
+              value={feedback.experiencia} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -103,6 +188,8 @@ export default function FormularioPage() {
               type="text"
               id="sugestao"
               name="sugestao"
+              onChange={handleChange}
+              value={feedback.sugestao} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -116,8 +203,10 @@ export default function FormularioPage() {
             </label>
             <input
               type="text"
-              id="infoDificuldade"
+              id="tipoDificuldade"
               name="infoDificuldade"
+              onChange={handleChange}
+              value={feedback.tipoDificuldade} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -127,8 +216,10 @@ export default function FormularioPage() {
             </label>
             <input
               type="text"
-              id="ds-dificuldade"
+              id="descricaoDificuldade"
               name="ds-dificuldade"
+              onChange={handleChange}
+              value={feedback.descricaoDificuldade} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -142,8 +233,10 @@ export default function FormularioPage() {
             </label>
             <input
               type="text"
-              id="perg-princ"
+              id="pergunta"
               name="perg-princ"
+              onChange={handleChange}
+              value={feedback.pergunta} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -159,6 +252,8 @@ export default function FormularioPage() {
               type="text"
               id="tempo"
               name="tempo"
+              onChange={handleChange}
+              value={feedback.tempo} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -170,6 +265,8 @@ export default function FormularioPage() {
               type="text"
               id="frequencia"
               name="frequencia"
+              onChange={handleChange}
+              value={feedback.frequencia} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
@@ -183,21 +280,24 @@ export default function FormularioPage() {
             </label>
             <input
               type="number"
-              id="avaliacao"
+              id="avaliar"
               name="avaliacao"
               min="1"
               max="5"
               step="0.1"
+              onChange={handleChange}
+              value={feedback.avaliar} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
             />
           </fieldset>
 
           <button
+            onClick={handlePost}
             type="submit"
             className="flex justify-center w-3/4 mx-auto bg-[#092d5c] text-white font-bold py-2 rounded hover:bg-blue-900"
           >
-            Enviar
+            {feedback.id ? "Atualizar" : "Cadastrar"}
           </button>
         </form>
       </section>
@@ -219,4 +319,6 @@ export default function FormularioPage() {
       )}
     </div>
   );
-}
+};
+
+export default FormularioPage;
