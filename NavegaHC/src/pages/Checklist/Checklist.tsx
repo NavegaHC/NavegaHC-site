@@ -11,7 +11,7 @@ export default function Checklist() {
   const [items, setItems] = useState<ChecklistItem[]>([
     {
       id: "local",
-      label: "Escolha um local bem iluminado e silencioso.",
+      label: "Escolha um local/lugar bem iluminado e silencioso.",
       checked: false,
       categoria: "Ambiente"
     },

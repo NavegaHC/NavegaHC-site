@@ -76,7 +76,7 @@ export default function FAQ() {
       title: "Acessibilidade",
       question: "1. Tem tradução em Libras na plataforma?",
       answer: "Ainda não tem, mas estamos trabalhando para colocar isso em breve.",
-      question2: "2. Dá para aumentar o tamanho das letras?",
+      question2: "2. Dá para aumentar o tamanho das letras do site?",
       answer2: "Sim! Você pode aumetar ou diminuir a fonte do site clicando no botão de acessibilidade no canto inferior esquerdo da página que lhe dará as opções de aumentar ou diminuir as letras",
     },
     {
