@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-type Feedback={
+type Feedback = {
   id?: number;
   nome: string;
   idade: number;
@@ -43,15 +43,16 @@ const FormularioPage = () => {
     }
   }, [feedbackEdicao]);
 
-  const API_URL = "http://localhost:8080/feedback";
+  const API_URL = "https://navega-hc-quarkus.onrender.com/feedback";
 
   const url = feedback.id ? `${API_URL}/${feedback.id}` : API_URL;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
+    const { id, value, type } = e.target;
+    
     setFeedback({
       ...feedback,
-      [id]: id === "id" || id === "avaliar" ? Number(value) : value,
+      [id]: type === "number" ? (value === "" ? 0 : Number(value)) : value, 
     });
   };
 
