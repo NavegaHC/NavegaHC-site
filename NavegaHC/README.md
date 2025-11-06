@@ -1,6 +1,6 @@
 # NavegaHC-site
 
-Endereço Organização GITHUB: https://github.com/NavegaHC
+Endereço Organização GITHUB: https://github.com/NavegaHC 
 
 ## Objetivo do Projeto
 Este projeto, intitulado Navega HC, tem como objetivo o desenvolvimento de uma 
