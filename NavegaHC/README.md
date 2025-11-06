@@ -86,6 +86,8 @@ com deficiência.
             acessibilidade.png (ícone de acessiblidade)
             chatbotnhc.png (ícone do chatbot)
             facebook.png (ícone do facebook)
+            github.png (ícone do github)
+            icon_anac.png (imagem de perfil da Ana)
             icon_aywy.png (imagem de perfil da Agatha)
             icon_smf.png (imagem de perfil da Samantha)
             instagram.png (ícone do instagram)
