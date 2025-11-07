@@ -141,7 +141,6 @@ const FormularioPage = () => {
             <legend className="text-[1.125rem] font-semibold text-gray-700">Dispositivo Acesso</legend>
             <label htmlFor="dispositivo" className="block mt-2 font-medium">
               Tipo de dispositivo:
-            </label>
             <input
               type="text"
               id="tipoDispositivo"
@@ -150,11 +149,11 @@ const FormularioPage = () => {
               value={feedback.tipoDispositivo} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
+              />
+              </label>
 
             <label htmlFor="sistema" className="block mt-4 font-medium">
               Sistema do dispositivo:
-            </label>
             <input
               type="text"
               id="sistemaDispositivo"
@@ -163,7 +162,8 @@ const FormularioPage = () => {
               value={feedback.sistemaDispositivo} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
+              />
+              </label>
           </fieldset>
 
           {/* Feedback */}
@@ -201,7 +201,6 @@ const FormularioPage = () => {
             <legend className="text-[1.125rem] font-semibold text-gray-700">Dificuldade</legend>
             <label htmlFor="infoDificuldade" className="block mt-2 font-medium">
               Tipo de dificuldade:
-            </label>
             <input
               type="text"
               id="tipoDificuldade"
@@ -210,11 +209,11 @@ const FormularioPage = () => {
               value={feedback.tipoDificuldade} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
+              />
+              </label>
 
             <label htmlFor="ds-dificuldade" className="block mt-4 font-medium">
               Descreva a dificuldade:
-            </label>
             <input
               type="text"
               id="descricaoDificuldade"
@@ -223,7 +222,8 @@ const FormularioPage = () => {
               value={feedback.descricaoDificuldade} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
+              />
+              </label>
           </fieldset>
 
           {/* Pergunta Principal */}
@@ -231,7 +231,6 @@ const FormularioPage = () => {
             <legend className="text-[1.125rem] font-semibold text-gray-700">Pergunta Principal</legend>
             <label htmlFor="perg-princ" className="block mt-2 font-medium">
               Você gostou do site NavegaHC?
-            </label>
             <input
               type="text"
               id="pergunta"
@@ -240,7 +239,8 @@ const FormularioPage = () => {
               value={feedback.pergunta} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
+              />
+              </label>
           </fieldset>
 
           {/* Tempo de Uso */}
@@ -278,7 +278,6 @@ const FormularioPage = () => {
             <legend className="text-[1.125rem] font-semibold text-gray-700">Avaliação</legend>
             <label htmlFor="avaliacao" className="block mt-2 font-medium">
               Avaliação (1 a 5):
-            </label>
             <input
               type="number"
               id="avaliar"
@@ -290,7 +289,8 @@ const FormularioPage = () => {
               value={feedback.avaliar} 
               required
               className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
+              />
+            </label>
           </fieldset>
 
           <button
