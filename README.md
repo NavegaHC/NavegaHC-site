@@ -101,9 +101,13 @@ com deficiência.
 
 Endereço GITHUB: https://github.com/NavegaHC/NavegaHC-site.git
 
+## Enderço do projeto na Vercel
+
+Link: https://navega-hcsite.vercel.app/
+
 ## Link do Vídeo no Youtube
 
-Link: 
+Link: https://youtu.be/JoynZbVrbO8
 
 ## Formatação arquivo MARKDOWN (*.MD)
 https://support.zendesk.com/hc/pt-br/articles/4408846544922-Formata%C3%A7%C3%A3o-de-texto-com-Markdown?page=1&sort_by=created_at&sort_order=desc     
