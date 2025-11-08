@@ -273,7 +273,7 @@ export default function LembreteCompleto() {
           {lembretes.length > 0 && !modoEdicao && (
             <button
               onClick={verMeusLembretes}
-              className="w-full mt-4 bg-green-600 text-white font-bold py-2 rounded-lg hover:bg-green-700 transition shadow-md"
+              className="w-full mt-4 bg-green-700 text-white font-bold py-2 rounded-lg hover:bg-green-800 transition shadow-md"
             >
               Ver Meus Lembretes ({lembretes.length})
             </button>
@@ -282,7 +282,7 @@ export default function LembreteCompleto() {
           {modoEdicao && (
             <button
               onClick={cancelarEdicao}
-              className="w-full mt-4 bg-gray-500 text-white font-bold py-2 rounded-lg hover:bg-gray-600 transition shadow-md"
+              className="w-full mt-4 bg-gray-600 text-white font-bold py-2 rounded-lg hover:bg-gray-700 transition shadow-md"
             >
               Cancelar Edição
             </button>

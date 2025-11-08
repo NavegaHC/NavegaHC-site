@@ -27,16 +27,16 @@ const Acessibilidade: React.FC = () => {
       </button>
 
       {mostrar && (
-        <div className="m-10 flex gap-2 bg-white p-1 rounded-lg shadow-md">
+        <div className="m-10 flex gap-2 bg-gray-100 p-1 rounded-lg shadow-md">
           <button
             onClick={aumentarFonte}
-            className="px-3 py-1 bg-blue-700 text-white rounded hover:bg-blue-800"
+            className="px-3 py-1 bg-blue-800 text-white rounded hover:bg-blue-800"
           >
             A+
           </button>
           <button
             onClick={diminuirFonte}
-            className="px-3 py-1 bg-red-700 text-white rounded hover:bg-red-900"
+            className="px-3 py-1 bg-red-800 text-white rounded hover:bg-red-900"
           >
             A-
           </button>

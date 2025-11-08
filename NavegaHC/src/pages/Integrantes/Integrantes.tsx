@@ -35,7 +35,7 @@ function Integrantes() {
         {integrantes.map((pessoa, index) => (
           <div
             key={index}
-            className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300"
+            className="bg-gray-50 rounded-2xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300"
           >
             <img
               src={pessoa.foto}

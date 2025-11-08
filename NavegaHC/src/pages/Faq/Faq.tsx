@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface FAQItemProps {
@@ -13,7 +13,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ title, question, answer, question2, a
   const [open, setOpen] = useState<boolean>(true);
 
   return (
-    <div className="mb-4 bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className="mb-4 bg-gray-100 rounded-2xl shadow-lg overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex justify-between items-center bg-[#092d5c] p-4 hover:bg-[#0a3a7a] focus:outline-none transition-colors"
@@ -55,14 +55,6 @@ interface FAQData {
 export default function FAQ() {
   const navigate = useNavigate();
   const [categoriaAtiva, setCategoriaAtiva] = useState<string>("");
-  const [faqVisits, setFaqVisits] = useState<number>(0);
-
-  useEffect(() => {
-    const visits = localStorage.getItem('faqVisits');
-    const count = visits ? parseInt(visits) + 1 : 1;
-    setFaqVisits(count);
-    localStorage.setItem('faqVisits', count.toString());
-  }, []);
 
   const faqs: FAQData[] = [
     {
@@ -120,7 +112,7 @@ export default function FAQ() {
   const faqAtiva = faqs.find(faq => faq.title === categoriaAtiva);
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4">
+    <div className="min-h-screen rounded-2xl bg-gray-100 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         
         <div className="text-center mb-8">
@@ -130,10 +122,7 @@ export default function FAQ() {
           <p className="text-gray-600 text-lg mb-4">
             Encontre respostas para as dúvidas mais comuns sobre o NavegaHC
           </p>
-          
-          <div className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
-            Esta página foi visitada {faqVisits} vezes
-          </div>
+
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 mb-8">

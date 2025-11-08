@@ -95,7 +95,7 @@ export default function Checklist() {
         
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 text-center">
           <h1 className="text-2xl font-bold text-[#092d5c] mb-4">
-            Checklist para sua Consulta de Fisioterapia
+            Checklist para sua Consulta de Fisioterapia 
           </h1>
           <p className="text-gray-600 mb-4">
             Prepare-se para sua consulta online do IMREA
@@ -104,13 +104,13 @@ export default function Checklist() {
           <div className="flex gap-2 justify-center">
             <button
               onClick={checkAll}
-              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-sm"
+              className="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition text-sm"
             >
               Marcar Todos
             </button>
             <button
               onClick={uncheckAll}
-              className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition text-sm"
+              className="bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-red-800 transition text-sm"
             >
               Desmarcar Todos
             </button>
@@ -149,8 +149,8 @@ export default function Checklist() {
 
         {showModal && (
           <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 text-center animate-fadeIn">
-              <h2 className="text-2xl font-bold text-green-700 mb-2">
+            <div className="bg-gray-100 rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 text-center animate-fadeIn">
+              <h2 className="text-2xl font-bold text-blue-800 mb-2">
                 Checklist Concluído!
               </h2>
               <p className="text-gray-600 mb-6">
